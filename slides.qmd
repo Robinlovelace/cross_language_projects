@@ -1,6 +1,5 @@
 ---
-title: Reproducible slides with Quarto and continuous deployment via GitHub actions
-subtitle: Demonstration slides
+title: Deploying cross-language in high impact projects
 format: 
   revealjs: default
   # clean-revealjs:
@@ -19,37 +18,28 @@ bibliography: references.bib
 
 # Introduction
 
-## Why make a presentation with Quarto and continuous deployment?
+## Why cross-language projects?
 
-- Allows you to test ideas in a standalone environment
-- Sharing materials with collaborators and the audience
-- Continuous deployment automates the process of updating the slides and ensures reproducibility
+-   a
+-   b
+-   c
 
-## How to get started?
+## ...
 
-- Check out the [Quarto documentation](https://quarto.org/)
-  - Especially the [Publishing](https://quarto.org/docs/publishing/) section
-- You can use this repository as a template for your own slides, go to https://github.com/Robinlovelace/reproducible-slides-repo-template and clone it
-- Note: the approach here is to publish the slides as part of a Quarto website project so it can be used for other purposes too, e.g. if you want to write a paper building on the slides
-
-## Extensions
-
-Add extensions with the following code (which adds the [`clean-revealjs`](https://github.com/grantmcdermott/quarto-revealjs-clean) extension, for example, which has a detailed demo hosted at [github.com/grantmcdermott/quarto-revealjs-clean-demo](https://github.com/grantmcdermott/quarto-revealjs-clean-demo/blob/main/template.qmd)):
-
-```sh
+``` sh
 quarto install extension grantmcdermott/quarto-revealjs-clean
 ```
 
 Then replace:
 
-```
+```         
 format: 
   revealjs: default
 ```
 
 with:
 
-```
+```         
 format: 
   clean-revealjs:
     self-contained: true
@@ -57,7 +47,7 @@ format:
 
 In the YAML header of your `.qmd` file.
 
-# Publishing slides (and more)
+# Publishing slides
 
 ## Setting-up `gh-pages` branch
 
@@ -73,14 +63,14 @@ Which leads to the following text and eventually auto-opens the deployed webiste
 
 ## The website
 
-The previous command creates a `gh-pages` branch with the slides in the `docs` folder. This is then automatically deployed to GitHub Pages, and the website is opened in your browser when ready:
+The previous command creates a `gh-pages` branch with the slides in the `docs` folder.
+This is then automatically deployed to GitHub Pages, and the website is opened in your browser when ready:
 
 ![](images/paste-5.png)
 
 How awesome is that?
 
 ### 🤯🤯🤯
-
 
 ## Debugging
 
@@ -110,5 +100,9 @@ Creates citations like this: [@peng2011]
 ![](images/paste-1.png)
 
 Alt+Shift+Z
+
+## Support in IDEs
+
+![](images/paste-6.png)
 
 # References
