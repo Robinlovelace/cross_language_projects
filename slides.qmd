@@ -116,16 +116,16 @@ Based on [workflow.yml file for](https://github.com/nptscot/nptscot.github.io/bl
 
 Checked boxes indicate approaches used in the NPT project.
 
-- [x] "Loose coupling" (system calls)
-- [x] "Tight coupling" with low-level code embedded in R/Python/other packages (e.g. `sf`, `rsgeo`, `shapely`)
-- [ ] Project environments (e.g. `pixi`, `mamba` [`rix`](https://docs.ropensci.org/rix/))
-- [x] Containerisation
+-   [x] "Loose coupling" (system calls)
+-   [x] "Tight coupling" with low-level code embedded in R/Python/other packages (e.g. `sf`, `rsgeo`, `shapely`)
+-   [ ] Project environments (e.g. `pixi`, `mamba` [`rix`](https://docs.ropensci.org/rix/))
+-   [x] Containerisation
 
 ## Loose coupling
 
 Example: [`odjitter`](https://github.com/dabreegster/odjitter/blob/98a7a6e03bc54bc79d3b3abbde91b6f79173ff1a/r/R/jitter.R#L163C1-L180C33) R package
 
-```r
+``` r
   msg = glue::glue("{odjitter_location} jitter --od-csv-path {od_csv_path} \\
   --zones-path {zones_path} \\
   --zone-name-key {zone_name_key} \\
@@ -150,7 +150,7 @@ Example: [`odjitter`](https://github.com/dabreegster/odjitter/blob/98a7a6e03bc54
 
 Example: [`qgisprocess` R package](https://github.com/r-spatial/qgisprocess/blob/702358e5849b38a9ce8550ee0f8b465c902d59d4/R/qgis-run.R#L26-L53)
 
-```r
+``` r
 qgis_run <- function(args = character(), ..., env = qgis_env(), path = qgis_path()) {
   if (is.null(path)) {
     message(
@@ -185,7 +185,7 @@ qgis_run <- function(args = character(), ..., env = qgis_env(), path = qgis_path
 
 Source: [`geoarrow-c`](https://github.com/geoarrow/geoarrow-c/blob/main/python/geoarrow-c/src/geoarrow/c/_lib.pyx#L1-L22)
 
-```py
+``` py
 
 
 # cython: language_level = 3
@@ -218,7 +218,7 @@ cdef extern from "geoarrow_type.h":
 
 Source: [`geoarrow-rs`](https://github.com/geoarrow/geoarrow-rs/blob/db06a8bf4b591b38fc164c29be86c630108751f6/python/pyo3-geoarrow/src/data_type.rs#L1-L29)
 
-```rust
+``` rust
 use crate::error::{PyGeoArrowError, PyGeoArrowResult};
 use crate::{PyCoordType, PyDimension};
 
@@ -259,7 +259,7 @@ impl PyGeometryType {
 
 Source: [`RcppExports.R` in `sf`](https://github.com/r-spatial/sf/blob/35f5f8be44e1923d242a489b51d7c58b8397a2a9/R/RcppExports.R#L212-L218)
 
-```r
+``` r
 CPL_geos_union <- function(sfc, by_feature = FALSE, is_coverage = FALSE) {
     .Call(`_sf_CPL_geos_union`, sfc, by_feature, is_coverage)
 }
@@ -276,7 +276,7 @@ CPL_geos_snap <- function(sfc0, sfc1, tolerance) {
 
 Source: [`geos-unary-geometry.R` in `geos`](https://github.com/paleolimbot/geos/blob/HEAD/R/geos-unary-geometry.R#L153-L169)
 
-```r
+``` r
 #' @rdname geos_centroid
 #' @export
 geos_unary_union <- function(geom) {
@@ -303,7 +303,7 @@ geos_unary_union_prec <- function(geom, grid_size) {
 
 Source: [`geos_functions.jl` in `LibGEOS.jl`](https://github.com/JuliaGeo/LibGEOS.jl/blob/91f69c04843f02a995c5df54b0186891534a2ef4/src/geos_functions.jl#L712-L726)
 
-```julia
+``` julia
 function union(obj1::Geometry, obj2::Geometry, context::GEOSContext = get_context(obj1))
     result = GEOSUnion_r(context, obj1, obj2)
     if result == C_NULL
@@ -324,22 +324,22 @@ end
 
 ## Project environments
 
-```bash
+``` bash
 pixi init test-project --format pyproject
 ```
 
-```
+```         
 ✔ Initialized project in ~/test-project
 ```
 
-```bash
+``` bash
 cd test-project
 pixi add geopandas
 pixi add --pypi --feature test pytest
 pixi install
 ```
 
-```
+```         
 ✔ Added pytest
 Added these as pypi-dependencies.
 Added these only for feature: test
@@ -347,15 +347,54 @@ Added these only for feature: test
 
 Cross-language support (source: [pixi.sh](https://pixi.sh/latest/ide_integration/r_studio/))
 
-```bash
+``` bash
 pixi add r-ggplot2
 ```
+
 Although some issues according to my tests (see [prefix-dev/pixi#2066](https://github.com/prefix-dev/pixi/issues/2066))
+
+## Pixi disk space usage
+
+```         
+114M         ┌── bin                          │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%
+101M         │         ┌── locale-archive.tmpl│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████ │   6%
+101M         │       ┌─┴ locale               │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████ │   6%
+116M         │     ┌─┴ lib64                  │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   7%
+142M         │   ┌─┴ usr                      │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████████ │   8%
+148M         │ ┌─┴ sysroot                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████████ │   8%
+174M         ├─┴ x86_64-conda-linux-gnu       │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████████ │  10%
+245M         │     ┌── 14.1.0                 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%
+245M         │   ┌─┴ x86_64-conda-linux-gnu   │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%
+246M         │ ┌─┴ gcc                        │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%
+246M         ├─┴ libexec                      │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%
+108M         │     ┌── 14.1.0                 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%
+108M         │   ┌─┴ x86_64-conda-linux-gnu   │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%
+108M         │ ┌─┴ gcc                        │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%
+341M         │ │ ┌── site-packages            │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████████████████████ │  19%
+391M         │ ├─┴ python3.12                 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████████████████████████ │  22%
+1.0G         ├─┴ lib                          │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████████████████████████████████████████████████████████████████████ │  58%
+1.7G       ┌─┴ default                        │████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ │ 100%
+1.7G     ┌─┴ envs                             │████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ │ 100%
+1.7G   ┌─┴ .pixi   
+```
 
 ## Containerisation
 
+Source: [github.com/geocompx/docker](https://github.com/geocompx/docker)
 
+![](images/paste-9.png)
 
+## Containerisation 2
+
+Source: [pangeo-data/pangeo-docker-images](https://github.com/pangeo-data/pangeo-docker-images)
+
+![](images/paste-10.png)
+
+## Containerisation 3
+
+Source: <https://github.com/b-data>
+
+![](images/paste-11.png)
 
 # Publishing
 
