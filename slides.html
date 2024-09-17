@@ -10,8 +10,8 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Your name">
-  <meta name="dcterms.date" content="2024-09-16">
+  <meta name="author" content="Robin Lovelace">
+  <meta name="dcterms.date" content="2024-09-17">
   <title>Deploying cross-language in high impact projects</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -417,53 +417,782 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Your name <a href="https://orcid.org/0000-0001-5679-6536" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+Robin Lovelace <a href="https://orcid.org/0000-0001-5679-6536" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
 </div>
 <div class="quarto-title-author-email">
-<a href="mailto:e.mail@leeds.ac.uk">e.mail@leeds.ac.uk</a>
+<a href="mailto:rob00 x at gmail dot com">rob00 x at gmail dot com</a>
 </div>
         <p class="quarto-title-affiliation">
-            xyz
+            University of Leeds, Active Travel England
           </p>
     </div>
 </div>
 
-  <p class="date">2024-09-16</p>
+  <p class="date">September 17, 2024</p>
 </section>
 <section>
 <section id="introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
 
 </section>
+<section id="contents" class="slide level2">
+<h2>Contents</h2>
+<ul>
+<li>Introduction</li>
+<li>Approaches to cross-language interoperability</li>
+<li>Containerisation</li>
+<li>Cross-language pain points</li>
+<li>Cross-language priorities</li>
+</ul>
+</section>
+<section id="case-study-for-reference" class="slide level2">
+<h2>Case study for reference</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>The Network Planning Tool for Scotland</p>
+<ul>
+<li>Development version (branch <code>dev</code>): <a href="https://nptscot.github.io/">nptscot.github.io</a></li>
+<li>Stable version (branch <code>production</code>): <a href="https://www.npt.scot/">www.npt.scot</a></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/basemaps.png"></p>
+<figcaption>The NPT web app</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="npt-stack" class="slide level2">
+<h2>NPT stack</h2>
+<div class="columns">
+<div class="column">
+<p>Backend: R + targets for ‘cross-language’ data pipeline workflow automation</p>
+<ul>
+<li>Relies on Rust crates</li>
+<li>Experiments with Python</li>
+</ul>
+<p>Frontend: JS + MapLibre for visualisation</p>
+<p>Progressive Web App (PWA)</p>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/map_controls.png"></p>
+<figcaption>Map controls</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="user-interface" class="slide level2">
+<h2>User interface</h2>
+
+<img data-src="./images/layer_controls.png" class="r-stretch quarto-figure-center"><p class="caption">Layer Controls</p></section>
+<section id="definitions" class="slide level2">
+<h2>Definitions</h2>
+<h3 id="deploying">“Deploying”</h3>
+<ul>
+<li>Code runs on more than one computer</li>
+<li>Results are published on a website that is maintained</li>
+<li>Project is “in production”
+<ul>
+<li>Users: Hosted on a trusted and well-used website</li>
+<li>Performance: updates to ‘production’ planned and documented</li>
+<li>Money changing hands</li>
+<li>Expectations</li>
+</ul></li>
+</ul>
+</section>
+<section id="deploying-the-npt" class="slide level2">
+<h2>Deploying the NPT</h2>
+
+<img data-src="images/paste-7.png" class="r-stretch"></section>
+<section id="deployment-workflow-of-npt" class="slide level2">
+<h2>Deployment workflow of NPT</h2>
+<p>Based on <a href="https://github.com/nptscot/nptscot.github.io/blob/production/.github/workflows/azure-static-web-apps-wonderful-beach-0edb91e03.yml">workflow.yml file for</a> GitHub actions.</p>
+
+<img data-src="images/paste-8.png" class="r-stretch"></section>
+<section id="high-impact-projects" class="slide level2">
+<h2>“High impact projects”</h2>
+<ul>
+<li>Broadly: tangible change results from the work
+<ul>
+<li>With measurable impact on environmental, social (or economic?) outcomes
+<ul>
+<li>E.g. Reduction in greenhouse gas emissions <!-- (accounting for 'rebound' effects) --></li>
+<li>E.g. better diets resulting in more DALYs <!-- (disability-adjusted life years) --></li>
+</ul></li>
+<li>Identifiable ‘pathway to impact’
+<ul>
+<li>E.g. New methods -&gt; new evidence -&gt; investment in active travel more effective that it would have been otherwise -&gt; more people cycling -&gt; tangible benefits</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="technical-requirements-for-impact" class="slide level2">
+<h2>Technical requirements for impact</h2>
+<ul>
+<li>Users: The web application has users</li>
+<li>Scale: covers a large geographic area needs big data inputs</li>
+<li>Trusted: code review and multiple contributors</li>
+<li>User-friendly: if it’s going to have lots of users</li>
+<li>Future proof: technology needs to last a long time</li>
+<li>Community: needed to ensure it lasts</li>
+</ul>
+</section>
 <section id="why-cross-language-projects" class="slide level2">
 <h2>Why cross-language projects?</h2>
 <ul>
-<li>a</li>
-<li>b</li>
-<li>c</li>
+<li>Specific tool written in a particular language (<code>odjitter</code>)</li>
+<li>Required for ‘best of both worlds’ (JS for visualisation, R for statistical modelling)</li>
+<li>Having multiple implementations ensures robustness
+<ul>
+<li>Aeroplane flight software has 3 implementations</li>
+<li>Redundancy common in mission-critical applications</li>
+</ul></li>
 </ul>
-</section>
-<section id="section" class="slide level2">
-<h2>…</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="ex">quarto</span> install extension grantmcdermott/quarto-revealjs-clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then replace:</p>
-<pre><code>format: 
-  revealjs: default</code></pre>
-<p>with:</p>
-<pre><code>format: 
-  clean-revealjs:
-    self-contained: true</code></pre>
-<p>In the YAML header of your <code>.qmd</code> file.</p>
 </section></section>
 <section>
-<section id="publishing-slides" class="title-slide slide level1 center">
-<h1>Publishing slides</h1>
+<section id="approaches-to-cross-language-projects" class="title-slide slide level1 center">
+<h1>Approaches to cross-language projects</h1>
+<p>Checked boxes indicate approaches used in the NPT project.</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">“Loose coupling” (system calls)</label></li>
+<li><label><input type="checkbox" checked="">“Tight coupling” with low-level code embedded in R/Python/other packages (e.g.&nbsp;<code>sf</code>, <code>rsgeo</code>, <code>shapely</code>)</label></li>
+<li><label><input type="checkbox">Project environments (e.g.&nbsp;<code>pixi</code>, <code>mamba</code> <a href="https://docs.ropensci.org/rix/"><code>rix</code></a>)</label></li>
+<li><label><input type="checkbox" checked="">Containerisation</label></li>
+</ul>
+</section>
+<section id="loose-coupling" class="slide level2">
+<h2>Loose coupling</h2>
+<p>Example: <a href="https://github.com/dabreegster/odjitter/blob/98a7a6e03bc54bc79d3b3abbde91b6f79173ff1a/r/R/jitter.R#L163C1-L180C33"><code>odjitter</code></a> R package</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>  msg <span class="ot">=</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{odjitter_location} jitter --od-csv-path {od_csv_path} </span><span class="sc">\\</span></span>
+<span id="cb1-2"><a></a><span class="st">  --zones-path {zones_path} </span><span class="sc">\\</span></span>
+<span id="cb1-3"><a></a><span class="st">  --zone-name-key {zone_name_key} </span><span class="sc">\\</span></span>
+<span id="cb1-4"><a></a><span class="st">  --origin-key {origin_key} </span><span class="sc">\\</span></span>
+<span id="cb1-5"><a></a><span class="st">  --destination-key {destination_key} </span><span class="sc">\\</span></span>
+<span id="cb1-6"><a></a><span class="st">  --subpoints-origins-path {subpoints_origins_path} </span><span class="sc">\\</span></span>
+<span id="cb1-7"><a></a><span class="st">  --subpoints-destinations-path {subpoints_destinations_path} </span><span class="sc">\\</span></span>
+<span id="cb1-8"><a></a><span class="st">  --disaggregation-key {disaggregation_key} </span><span class="sc">\\</span></span>
+<span id="cb1-9"><a></a><span class="st">  --disaggregation-threshold {disaggregation_threshold} </span><span class="sc">\\</span></span>
+<span id="cb1-10"><a></a><span class="st">  --rng-seed {rng_seed} </span><span class="sc">\\</span></span>
+<span id="cb1-11"><a></a><span class="st">  {deduplicate_pairs}  </span><span class="sc">\\</span></span>
+<span id="cb1-12"><a></a><span class="st">  --output-path {output_path}"</span>)</span>
+<span id="cb1-13"><a></a>  <span class="cf">if</span>(show_command) {</span>
+<span id="cb1-14"><a></a>    <span class="fu">message</span>(<span class="st">"command sent to the system:"</span>)</span>
+<span id="cb1-15"><a></a>    <span class="fu">cat</span>(msg)</span>
+<span id="cb1-16"><a></a>  }</span>
+<span id="cb1-17"><a></a>  <span class="fu">system</span>(msg)</span>
+<span id="cb1-18"><a></a>  res <span class="ot">=</span> sf<span class="sc">::</span><span class="fu">read_sf</span>(output_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="loose-coupling-1" class="slide level2">
+<h2>Loose coupling</h2>
+<p>Example: <a href="https://github.com/r-spatial/qgisprocess/blob/702358e5849b38a9ce8550ee0f8b465c902d59d4/R/qgis-run.R#L26-L53"><code>qgisprocess</code> R package</a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>qgis_run <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">args =</span> <span class="fu">character</span>(), ..., <span class="at">env =</span> <span class="fu">qgis_env</span>(), <span class="at">path =</span> <span class="fu">qgis_path</span>()) {</span>
+<span id="cb2-2"><a></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(path)) {</span>
+<span id="cb2-3"><a></a>    <span class="fu">message</span>(</span>
+<span id="cb2-4"><a></a>      <span class="st">"The filepath of 'qgis_process' is not present in the package cache, "</span>,</span>
+<span id="cb2-5"><a></a>      <span class="st">"so the package is not well configured.</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb2-6"><a></a>      <span class="st">"Restart R and reload the package; run `qgis_configure()` if needed.</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb2-7"><a></a>      <span class="st">"For now, will try to fix it on the fly, but some functionality may not work.</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb2-8"><a></a>    )</span>
+<span id="cb2-9"><a></a>    path <span class="ot">&lt;-</span> <span class="fu">qgis_path</span>(<span class="at">query =</span> <span class="cn">TRUE</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-10"><a></a>    <span class="co"># typically the version will also be missing, so fixing that as well:</span></span>
+<span id="cb2-11"><a></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(qgisprocess_cache<span class="sc">$</span>version)) {</span>
+<span id="cb2-12"><a></a>      <span class="fu">invisible</span>(<span class="fu">qgis_version</span>(<span class="at">query =</span> <span class="cn">TRUE</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb2-13"><a></a>    }</span>
+<span id="cb2-14"><a></a>  }</span>
+<span id="cb2-15"><a></a>  <span class="co"># workaround for running Windows batch files where arguments have spaces</span></span>
+<span id="cb2-16"><a></a>  <span class="co"># see https://github.com/r-lib/processx/issues/301</span></span>
+<span id="cb2-17"><a></a>  <span class="cf">if</span> (<span class="fu">is_windows</span>()) {</span>
+<span id="cb2-18"><a></a>    withr<span class="sc">::</span><span class="fu">with_envvar</span>(</span>
+<span id="cb2-19"><a></a>      env,</span>
+<span id="cb2-20"><a></a>      processx<span class="sc">::</span><span class="fu">run</span>(<span class="st">"cmd.exe"</span>, <span class="fu">c</span>(<span class="st">"/c"</span>, <span class="st">"call"</span>, path, args), ...),</span>
+<span id="cb2-21"><a></a>    )</span>
+<span id="cb2-22"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb2-23"><a></a>    withr<span class="sc">::</span><span class="fu">with_envvar</span>(</span>
+<span id="cb2-24"><a></a>      env,</span>
+<span id="cb2-25"><a></a>      processx<span class="sc">::</span><span class="fu">run</span>(path, args, ...)</span>
+<span id="cb2-26"><a></a>    )</span>
+<span id="cb2-27"><a></a>  }</span>
+<span id="cb2-28"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tight-coupling-1" class="slide level2">
+<h2>Tight coupling 1</h2>
+<p>Source: <a href="https://github.com/geoarrow/geoarrow-c/blob/main/python/geoarrow-c/src/geoarrow/c/_lib.pyx#L1-L22"><code>geoarrow-c</code></a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a></span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a><span class="co"># cython: language_level = 3</span></span>
+<span id="cb3-4"><a></a><span class="co"># cython: linetrace=True</span></span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a><span class="co">"""Low-level geoarrow Python bindings."""</span></span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a><span class="im">from</span> libc.stdint cimport uint8_t, int32_t, int64_t, uintptr_t</span>
+<span id="cb3-11"><a></a><span class="im">from</span> cpython cimport Py_buffer, PyObject</span>
+<span id="cb3-12"><a></a><span class="im">from</span> libcpp cimport <span class="bu">bool</span></span>
+<span id="cb3-13"><a></a><span class="im">from</span> libcpp.string cimport string</span>
+<span id="cb3-14"><a></a></span>
+<span id="cb3-15"><a></a></span>
+<span id="cb3-16"><a></a>cdef extern <span class="im">from</span> <span class="st">"geoarrow_type.h"</span>:</span>
+<span id="cb3-17"><a></a>    struct ArrowSchema:</span>
+<span id="cb3-18"><a></a>        const char<span class="op">*</span> <span class="bu">format</span></span>
+<span id="cb3-19"><a></a>        const char<span class="op">*</span> name</span>
+<span id="cb3-20"><a></a>        const char<span class="op">*</span> metadata</span>
+<span id="cb3-21"><a></a>        int64_t flags</span>
+<span id="cb3-22"><a></a>        int64_t n_children</span>
+<span id="cb3-23"><a></a>        ArrowSchema<span class="op">**</span> children</span>
+<span id="cb3-24"><a></a>        ArrowSchema<span class="op">*</span> dictionary</span>
+<span id="cb3-25"><a></a>        void (<span class="op">*</span>release)(ArrowSchema<span class="op">*</span>)</span>
+<span id="cb3-26"><a></a>        void<span class="op">*</span> private_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tight-coupling-2" class="slide level2">
+<h2>Tight coupling 2</h2>
+<p>Source: <a href="https://github.com/geoarrow/geoarrow-rs/blob/db06a8bf4b591b38fc164c29be86c630108751f6/python/pyo3-geoarrow/src/data_type.rs#L1-L29"><code>geoarrow-rs</code></a></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource rust number-lines code-with-copy"><code class="sourceCode rust"><span id="cb4-1"><a></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::error::</span><span class="op">{</span>PyGeoArrowError<span class="op">,</span> PyGeoArrowResult<span class="op">};</span></span>
+<span id="cb4-2"><a></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">{</span>PyCoordType<span class="op">,</span> PyDimension<span class="op">};</span></span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a></span>
+<span id="cb4-5"><a></a><span class="kw">use</span> <span class="pp">geoarrow::array::</span>CoordType<span class="op">;</span></span>
+<span id="cb4-6"><a></a><span class="kw">use</span> <span class="pp">geoarrow::datatypes::</span><span class="op">{</span>Dimension<span class="op">,</span> GeoDataType<span class="op">};</span></span>
+<span id="cb4-7"><a></a><span class="kw">use</span> <span class="pp">pyo3::exceptions::</span>PyValueError<span class="op">;</span></span>
+<span id="cb4-8"><a></a><span class="kw">use</span> <span class="pp">pyo3::</span>intern<span class="op">;</span></span>
+<span id="cb4-9"><a></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
+<span id="cb4-10"><a></a><span class="kw">use</span> <span class="pp">pyo3::types::</span><span class="op">{</span>PyCapsule<span class="op">,</span> PyType<span class="op">};</span></span>
+<span id="cb4-11"><a></a><span class="kw">use</span> <span class="pp">pyo3_arrow::ffi::</span>to_schema_pycapsule<span class="op">;</span></span>
+<span id="cb4-12"><a></a><span class="kw">use</span> <span class="pp">pyo3_arrow::</span>PyField<span class="op">;</span></span>
+<span id="cb4-13"><a></a></span>
+<span id="cb4-14"><a></a></span>
+<span id="cb4-15"><a></a><span class="at">#[</span>pyclass<span class="at">(</span>module <span class="op">=</span> <span class="st">"geoarrow.rust.core._rust"</span><span class="op">,</span> name <span class="op">=</span> <span class="st">"GeometryType"</span><span class="op">,</span> subclass<span class="at">)]</span></span>
+<span id="cb4-16"><a></a><span class="kw">pub</span> <span class="kw">struct</span> PyGeometryType(<span class="kw">pub</span>(<span class="kw">crate</span>) GeoDataType)<span class="op">;</span></span>
+<span id="cb4-17"><a></a></span>
+<span id="cb4-18"><a></a></span>
+<span id="cb4-19"><a></a><span class="kw">impl</span> PyGeometryType <span class="op">{</span></span>
+<span id="cb4-20"><a></a>    <span class="kw">pub</span> <span class="kw">fn</span> new(data_type<span class="op">:</span> GeoDataType) <span class="op">-&gt;</span> <span class="dt">Self</span> <span class="op">{</span></span>
+<span id="cb4-21"><a></a>        <span class="dt">Self</span>(data_type)</span>
+<span id="cb4-22"><a></a>    <span class="op">}</span></span>
+<span id="cb4-23"><a></a></span>
+<span id="cb4-24"><a></a></span>
+<span id="cb4-25"><a></a>    <span class="co">/// Import from a raw Arrow C Schema capsules</span></span>
+<span id="cb4-26"><a></a>    <span class="kw">pub</span> <span class="kw">fn</span> from_arrow_pycapsule(capsule<span class="op">:</span> <span class="op">&amp;</span>Bound<span class="op">&lt;</span>PyCapsule<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyGeoArrowResult<span class="op">&lt;</span><span class="dt">Self</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb4-27"><a></a>        <span class="pp">PyField::</span>from_arrow_pycapsule(capsule)<span class="op">?.</span>try_into()</span>
+<span id="cb4-28"><a></a>    <span class="op">}</span></span>
+<span id="cb4-29"><a></a></span>
+<span id="cb4-30"><a></a></span>
+<span id="cb4-31"><a></a>    <span class="kw">pub</span> <span class="kw">fn</span> into_inner(<span class="kw">self</span>) <span class="op">-&gt;</span> GeoDataType <span class="op">{</span></span>
+<span id="cb4-32"><a></a>        <span class="kw">self</span><span class="op">.</span><span class="dv">0</span></span>
+<span id="cb4-33"><a></a>    <span class="op">}</span></span>
+<span id="cb4-34"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tight-coupling-3" class="slide level2">
+<h2>Tight coupling 3</h2>
+<p>Source: <a href="https://github.com/r-spatial/sf/blob/35f5f8be44e1923d242a489b51d7c58b8397a2a9/R/RcppExports.R#L212-L218"><code>RcppExports.R</code> in <code>sf</code></a></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>CPL_geos_union <span class="ot">&lt;-</span> <span class="cf">function</span>(sfc, <span class="at">by_feature =</span> <span class="cn">FALSE</span>, <span class="at">is_coverage =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb5-2"><a></a>    <span class="fu">.Call</span>(<span class="st">`</span><span class="at">_sf_CPL_geos_union</span><span class="st">`</span>, sfc, by_feature, is_coverage)</span>
+<span id="cb5-3"><a></a>}</span>
+<span id="cb5-4"><a></a></span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a>CPL_geos_snap <span class="ot">&lt;-</span> <span class="cf">function</span>(sfc0, sfc1, tolerance) {</span>
+<span id="cb5-7"><a></a>    <span class="fu">.Call</span>(<span class="st">`</span><span class="at">_sf_CPL_geos_snap</span><span class="st">`</span>, sfc0, sfc1, tolerance)</span>
+<span id="cb5-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tight-coupling-4" class="slide level2">
+<h2>Tight coupling 4</h2>
+<!-- https://github.com/paleolimbot/geos/blob/HEAD/R/geos-unary-geometry.R#L153-L169 -->
+<p>Source: <a href="https://github.com/paleolimbot/geos/blob/HEAD/R/geos-unary-geometry.R#L153-L169"><code>geos-unary-geometry.R</code> in <code>geos</code></a></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co">#' @rdname geos_centroid</span></span>
+<span id="cb6-2"><a></a><span class="co">#' @export</span></span>
+<span id="cb6-3"><a></a>geos_unary_union <span class="ot">&lt;-</span> <span class="cf">function</span>(geom) {</span>
+<span id="cb6-4"><a></a>  geom <span class="ot">&lt;-</span> <span class="fu">sanitize_geos_geometry</span>(geom)</span>
+<span id="cb6-5"><a></a>  <span class="fu">new_geos_geometry</span>(<span class="fu">.Call</span>(geos_c_unary_union, geom), <span class="at">crs =</span> <span class="fu">attr</span>(geom, <span class="st">"crs"</span>, <span class="at">exact =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb6-6"><a></a>}</span>
+<span id="cb6-7"><a></a></span>
+<span id="cb6-8"><a></a></span>
+<span id="cb6-9"><a></a><span class="co">#' @rdname geos_centroid</span></span>
+<span id="cb6-10"><a></a><span class="co">#' @export</span></span>
+<span id="cb6-11"><a></a>geos_unary_union_prec <span class="ot">&lt;-</span> <span class="cf">function</span>(geom, grid_size) {</span>
+<span id="cb6-12"><a></a>  geom <span class="ot">&lt;-</span> <span class="fu">sanitize_geos_geometry</span>(geom)</span>
+<span id="cb6-13"><a></a>  recycled <span class="ot">&lt;-</span> <span class="fu">recycle_common</span>(<span class="fu">list</span>(geom, <span class="fu">sanitize_double</span>(grid_size)))</span>
+<span id="cb6-14"><a></a>  <span class="fu">new_geos_geometry</span>(</span>
+<span id="cb6-15"><a></a>    <span class="fu">.Call</span>(geos_c_unary_union_prec, recycled[[<span class="dv">1</span>]], recycled[[<span class="dv">2</span>]]),</span>
+<span id="cb6-16"><a></a>    <span class="at">crs =</span> <span class="fu">attr</span>(geom, <span class="st">"crs"</span>, <span class="at">exact =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-17"><a></a>  )</span>
+<span id="cb6-18"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tight-coupling-5" class="slide level2">
+<h2>Tight coupling 5</h2>
+<!-- https://github.com/JuliaGeo/LibGEOS.jl/blob/91f69c04843f02a995c5df54b0186891534a2ef4/src/geos_functions.jl#L712-L726 -->
+<p>Source: <a href="https://github.com/JuliaGeo/LibGEOS.jl/blob/91f69c04843f02a995c5df54b0186891534a2ef4/src/geos_functions.jl#L712-L726"><code>geos_functions.jl</code> in <code>LibGEOS.jl</code></a></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a></a><span class="kw">function</span> <span class="fu">union</span>(obj1<span class="op">::</span><span class="dt">Geometry</span>, obj2<span class="op">::</span><span class="dt">Geometry</span>, context<span class="op">::</span><span class="dt">GEOSContext </span><span class="op">=</span> <span class="fu">get_context</span>(obj1))</span>
+<span id="cb7-2"><a></a>    result <span class="op">=</span> <span class="fu">GEOSUnion_r</span>(context, obj1, obj2)</span>
+<span id="cb7-3"><a></a>    <span class="cf">if</span> result <span class="op">==</span> <span class="cn">C_NULL</span></span>
+<span id="cb7-4"><a></a>        <span class="fu">error</span>(<span class="st">"LibGEOS: Error in GEOSUnion"</span>)</span>
+<span id="cb7-5"><a></a>    <span class="cf">end</span></span>
+<span id="cb7-6"><a></a>    <span class="fu">geomFromGEOS</span>(result, context)</span>
+<span id="cb7-7"><a></a><span class="kw">end</span></span>
+<span id="cb7-8"><a></a></span>
+<span id="cb7-9"><a></a></span>
+<span id="cb7-10"><a></a><span class="kw">function</span> <span class="fu">unaryUnion</span>(obj<span class="op">::</span><span class="dt">Geometry</span>, context<span class="op">::</span><span class="dt">GEOSContext </span><span class="op">=</span> <span class="fu">get_context</span>(obj))</span>
+<span id="cb7-11"><a></a>    result <span class="op">=</span> <span class="fu">GEOSUnaryUnion_r</span>(context, obj)</span>
+<span id="cb7-12"><a></a>    <span class="cf">if</span> result <span class="op">==</span> <span class="cn">C_NULL</span></span>
+<span id="cb7-13"><a></a>        <span class="fu">error</span>(<span class="st">"LibGEOS: Error in GEOSUnaryUnion"</span>)</span>
+<span id="cb7-14"><a></a>    <span class="cf">end</span></span>
+<span id="cb7-15"><a></a>    <span class="fu">geomFromGEOS</span>(result, context)</span>
+<span id="cb7-16"><a></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="project-environments" class="slide level2">
+<h2>Project environments</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a></a><span class="ex">pixi</span> init test-project <span class="at">--format</span> pyproject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>✔ Initialized project in ~/test-project</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a></a><span class="bu">cd</span> test-project</span>
+<span id="cb10-2"><a></a><span class="ex">pixi</span> add geopandas</span>
+<span id="cb10-3"><a></a><span class="ex">pixi</span> add <span class="at">--pypi</span> <span class="at">--feature</span> test pytest</span>
+<span id="cb10-4"><a></a><span class="ex">pixi</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>✔ Added pytest
+Added these as pypi-dependencies.
+Added these only for feature: test</code></pre>
+<p>Cross-language support (source: <a href="https://pixi.sh/latest/ide_integration/r_studio/">pixi.sh</a>)</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a></a><span class="ex">pixi</span> add r-ggplot2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Although some issues according to my tests (see <a href="https://github.com/prefix-dev/pixi/issues/2066">prefix-dev/pixi#2066</a>)</p>
+</section>
+<section id="pixi-disk-space-usage" class="slide level2">
+<h2>Pixi disk space usage</h2>
+<pre><code>114M         ┌── bin                          │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%
+101M         │         ┌── locale-archive.tmpl│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████ │   6%
+101M         │       ┌─┴ locale               │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████ │   6%
+116M         │     ┌─┴ lib64                  │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   7%
+142M         │   ┌─┴ usr                      │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████████ │   8%
+148M         │ ┌─┴ sysroot                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████████ │   8%
+174M         ├─┴ x86_64-conda-linux-gnu       │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████████ │  10%
+245M         │     ┌── 14.1.0                 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%
+245M         │   ┌─┴ x86_64-conda-linux-gnu   │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%
+246M         │ ┌─┴ gcc                        │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%
+246M         ├─┴ libexec                      │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%
+108M         │     ┌── 14.1.0                 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%
+108M         │   ┌─┴ x86_64-conda-linux-gnu   │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%
+108M         │ ┌─┴ gcc                        │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%
+341M         │ │ ┌── site-packages            │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████████████████████ │  19%
+391M         │ ├─┴ python3.12                 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████████████████████████ │  22%
+1.0G         ├─┴ lib                          │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████████████████████████████████████████████████████████████████████ │  58%
+1.7G       ┌─┴ default                        │████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ │ 100%
+1.7G     ┌─┴ envs                             │████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ │ 100%
+1.7G   ┌─┴ .pixi   </code></pre>
+</section>
+<section id="containerisation" class="slide level2">
+<h2>Containerisation</h2>
+<p>Source: <a href="https://github.com/geocompx/docker">github.com/geocompx/docker</a></p>
+
+<img data-src="images/paste-9.png" class="r-stretch"></section>
+<section id="containerisation-2" class="slide level2">
+<h2>Containerisation 2</h2>
+<p>Source: <a href="https://github.com/pangeo-data/pangeo-docker-images">pangeo-data/pangeo-docker-images</a></p>
+
+<img data-src="images/paste-10.png" class="r-stretch"></section>
+<section id="containerisation-3" class="slide level2">
+<h2>Containerisation 3</h2>
+<p>Source: <a href="https://github.com/b-data" class="uri">https://github.com/b-data</a></p>
+
+<img data-src="images/paste-11.png" class="r-stretch"></section>
+<section id="bdata-all-images" class="slide level2">
+<h2>bdata: All images</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">R</th>
+<th style="text-align: left;">Python</th>
+<th style="text-align: left;">Jupyter Hub</th>
+<th style="text-align: left;">Jupyter Lab</th>
+<th style="text-align: left;">code‑server (Code)</th>
+<th style="text-align: left;">RStudio</th>
+<th style="text-align: left;">Neovim</th>
+<th style="text-align: left;">Git</th>
+<th style="text-align: left;">Git&nbsp;LFS</th>
+<th style="text-align: left;">Pandoc</th>
+<th style="text-align: left;">CRAN&nbsp;date</th>
+<th style="text-align: left;">Linux&nbsp;distro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">4.4.1</td>
+<td style="text-align: left;">3.12.6</td>
+<td style="text-align: left;">5.1.0</td>
+<td style="text-align: left;">4.2.5</td>
+<td style="text-align: left;">4.92.2&nbsp;(1.92.2)</td>
+<td style="text-align: left;">2024.04.2+764</td>
+<td style="text-align: left;">0.10.1</td>
+<td style="text-align: left;">2.46.1</td>
+<td style="text-align: left;">3.5.1</td>
+<td style="text-align: left;">3.2</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Debian&nbsp;12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.4.0</td>
+<td style="text-align: left;">3.12.4</td>
+<td style="text-align: left;">5.0.0</td>
+<td style="text-align: left;">4.2.2</td>
+<td style="text-align: left;">4.90.0&nbsp;(1.90.0)</td>
+<td style="text-align: left;">2024.04.2+764</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">2.45.2</td>
+<td style="text-align: left;">3.5.1</td>
+<td style="text-align: left;">3.1.11</td>
+<td style="text-align: left;">2024‑06‑14</td>
+<td style="text-align: left;">Debian&nbsp;12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.3.3</td>
+<td style="text-align: left;">3.11.9</td>
+<td style="text-align: left;">4.1.5</td>
+<td style="text-align: left;">4.1.6</td>
+<td style="text-align: left;">4.23.0&nbsp;(1.88.0)</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">2.44.0</td>
+<td style="text-align: left;">3.5.1</td>
+<td style="text-align: left;">3.1.11</td>
+<td style="text-align: left;">2024‑04‑24</td>
+<td style="text-align: left;">Debian&nbsp;12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.3.2</td>
+<td style="text-align: left;">3.11.8</td>
+<td style="text-align: left;">4.0.2</td>
+<td style="text-align: left;">4.1.2</td>
+<td style="text-align: left;">4.21.2&nbsp;(1.86.2)</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">2.44.0</td>
+<td style="text-align: left;">3.4.1</td>
+<td style="text-align: left;">3.1.11</td>
+<td style="text-align: left;">2024‑02‑29</td>
+<td style="text-align: left;">Debian&nbsp;12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.3.1</td>
+<td style="text-align: left;">3.11.6</td>
+<td style="text-align: left;">4.0.2</td>
+<td style="text-align: left;">3.6.6</td>
+<td style="text-align: left;">4.18.0&nbsp;(1.83.1)</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">2.42.0</td>
+<td style="text-align: left;">3.4.0</td>
+<td style="text-align: left;">3.1.1</td>
+<td style="text-align: left;">2023‑10‑31</td>
+<td style="text-align: left;">Debian&nbsp;12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.3.0</td>
+<td style="text-align: left;">3.11.4</td>
+<td style="text-align: left;">4.0.1</td>
+<td style="text-align: left;">3.6.4</td>
+<td style="text-align: left;">4.13.0&nbsp;(1.78.2)</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">2.41.0</td>
+<td style="text-align: left;">3.3.0</td>
+<td style="text-align: left;">3.1.1</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">Debian&nbsp;12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.2.3</td>
+<td style="text-align: left;">3.10.11</td>
+<td style="text-align: left;">4.0.0</td>
+<td style="text-align: left;">3.6.3</td>
+<td style="text-align: left;">4.9.1&nbsp;(1.73.1)</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">2.40.0</td>
+<td style="text-align: left;">3.3.0</td>
+<td style="text-align: left;">2.19.2</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">Debian&nbsp;11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.2.2</td>
+<td style="text-align: left;">3.10.10</td>
+<td style="text-align: left;">3.1.1</td>
+<td style="text-align: left;">3.6.1</td>
+<td style="text-align: left;">4.9.1&nbsp;(1.73.1)</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">2.40.0</td>
+<td style="text-align: left;">3.3.0</td>
+<td style="text-align: left;">2.19.2</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">Debian&nbsp;11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.2.1</td>
+<td style="text-align: left;">3.9.2</td>
+<td style="text-align: left;">2.3.1</td>
+<td style="text-align: left;">3.5.0</td>
+<td style="text-align: left;">4.8.1&nbsp;(1.72.1)</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">2.38.1</td>
+<td style="text-align: left;">3.2.0</td>
+<td style="text-align: left;">2.19.2</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">Debian&nbsp;11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.2.0</td>
+<td style="text-align: left;">3.9.2</td>
+<td style="text-align: left;">2.3.1</td>
+<td style="text-align: left;">3.4.3</td>
+<td style="text-align: left;">4.4.0&nbsp;(1.66.2)</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">2.36.1</td>
+<td style="text-align: left;">3.2.0</td>
+<td style="text-align: left;">2.18</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">Debian&nbsp;11</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bdata-verse-images" class="slide level2">
+<h2>bdata: verse+ images</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">R</th>
+<th style="text-align: left;">CTAN&nbsp;date</th>
+<th style="text-align: left;">Quarto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">4.4.1</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1.5.57</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.4.0</td>
+<td style="text-align: left;">2024‑06‑14</td>
+<td style="text-align: left;">1.4.555</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.3.3</td>
+<td style="text-align: left;">2024‑04‑24</td>
+<td style="text-align: left;">1.4.553</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.3.2</td>
+<td style="text-align: left;">2024‑02‑29</td>
+<td style="text-align: left;">1.4.550</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.3.1</td>
+<td style="text-align: left;">2023‑10‑31</td>
+<td style="text-align: left;">1.3.450</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.3.0</td>
+<td style="text-align: left;">2023‑06‑16</td>
+<td style="text-align: left;">1.3.361</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.2.3</td>
+<td style="text-align: left;">2023‑04‑21</td>
+<td style="text-align: left;">1.2.475[^1]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.2.2</td>
+<td style="text-align: left;">2023‑03‑15</td>
+<td style="text-align: left;">1.2.335[^1]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.2.1</td>
+<td style="text-align: left;">2022‑10‑31</td>
+<td style="text-align: left;">1.1.251[^1]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.2.0</td>
+<td style="text-align: left;">2022‑06‑23</td>
+<td style="text-align: left;">n/a</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bdata-qgisprocess-images" class="slide level2">
+<h2>bdata: qgisprocess images</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">R</th>
+<th style="text-align: left;">QGIS</th>
+<th style="text-align: left;">SAGA</th>
+<th style="text-align: left;">OTB[^1]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">4.4.1</td>
+<td style="text-align: left;">3.38.3</td>
+<td style="text-align: left;">9.1.3</td>
+<td style="text-align: left;">9.0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.4.0</td>
+<td style="text-align: left;">3.36.3</td>
+<td style="text-align: left;">9.1.3</td>
+<td style="text-align: left;">9.0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.3.3</td>
+<td style="text-align: left;">3.36.2</td>
+<td style="text-align: left;">9.1.3</td>
+<td style="text-align: left;">9.0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.3.2</td>
+<td style="text-align: left;">3.36.0</td>
+<td style="text-align: left;">9.1.3</td>
+<td style="text-align: left;">8.1.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.3.1</td>
+<td style="text-align: left;">3.34.0</td>
+<td style="text-align: left;">9.1.3</td>
+<td style="text-align: left;">8.1.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.3.0</td>
+<td style="text-align: left;">3.30.3</td>
+<td style="text-align: left;">8.5.0</td>
+<td style="text-align: left;">8.1.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.2.3</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.2.2</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.2.1</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.2.0</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bdata-demo" class="slide level2">
+<h2>bdata: demo</h2>
+<p>Source: https://github.com/b-data/jupyterlab-r-docker-stack/tree/main?tab=readme-ov-file</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--rm</span> <span class="dt">\</span></span>
+<span id="cb14-2"><a></a>  <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
+<span id="cb14-3"><a></a>  <span class="at">-u</span> root <span class="dt">\</span></span>
+<span id="cb14-4"><a></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">${PWD}</span><span class="st">/jupyterlab-jovyan"</span>:/home/jovyan <span class="dt">\</span></span>
+<span id="cb14-5"><a></a>  <span class="at">-e</span> NB_UID=<span class="va">$(</span><span class="fu">id</span> <span class="at">-u</span><span class="va">)</span> <span class="dt">\</span></span>
+<span id="cb14-6"><a></a>  <span class="at">-e</span> NB_GID=<span class="va">$(</span><span class="fu">id</span> <span class="at">-g</span><span class="va">)</span> <span class="dt">\</span></span>
+<span id="cb14-7"><a></a>  <span class="at">-e</span> CHOWN_HOME=yes <span class="dt">\</span></span>
+<span id="cb14-8"><a></a>  <span class="at">-e</span> CHOWN_HOME_OPTS=<span class="st">'-R'</span> <span class="dt">\</span></span>
+<span id="cb14-9"><a></a>  glcr.b-data.ch/jupyterlab/r/geospatial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="rocker-images-on-which-geocompx-docker-builds" class="slide level2">
+<h2>Rocker images (on which geocompx docker builds):</h2>
+<!--
+install_jupyter.sh
+install_nvtop.sh
+install_pandoc.sh
+install_pyenv.sh
+install_python.sh -->
+<blockquote>
+<p>The Docker images built from this repository describe the software installation method in standalone scripts rather than directly in the Dockerfiles. These files are under the scripts directory, and these files are copied in all Docker images, under a top-level /rocker_scripts directory. This allows users to extend images by selecting additional modules to install on top of any pre-built images.</p>
+</blockquote>
+<p>E.g.</p>
+<pre><code>FROM rocker/rstudio:4.0.0
+RUN /rocker_scripts/install_python.sh
+RUN /rocker_scripts/install_julia.sh</code></pre>
+</section></section>
+<section>
+<section id="cross-language-pain-points" class="title-slide slide level1 center">
+<h1>Cross-language pain points</h1>
+
+</section>
+<section id="too-many-options-ide" class="slide level2">
+<h2>Too many options: IDE</h2>
+<ul>
+<li>VSCode is market leader with strong community
+<ul>
+<li>Pro: many extensions</li>
+<li>Pro: Live Share</li>
+<li>Pro: GitHub integration (including copilot)</li>
+<li>Pro: devcontainers work out-of-the-box</li>
+<li>Con: setup time, can be intimidating</li>
+</ul></li>
+<li>Positron
+<ul>
+<li>Pro: More batteries included</li>
+<li>Con: Missing great VSCode features (e.g.&nbsp;Live Share)</li>
+<li>Con: Early days, fewer developers</li>
+<li>Thought: why didn’t they put energy into great extensions for modularity?</li>
+</ul></li>
+<li>RStudio, Jupyter Lab, Zed, …</li>
+</ul>
+</section>
+<section id="resource-requirements" class="slide level2">
+<h2>Resource requirements</h2>
+<ul>
+<li>Each new environment can take up a few GB of space</li>
+<li>Lack of shared binaries, could be overcome by pixi and judicious use of Docker containers</li>
+<li>Headspace requirements of learning new syntax and quirks</li>
+</ul>
+</section></section>
+<section>
+<section id="cross-language-priorities" class="title-slide slide level1 center">
+<h1>Cross-language priorities</h1>
+
+</section>
+<section id="interactive-session" class="slide level2">
+<h2>Interactive session</h2>
+<ul>
+<li>What would your top ask be to use multiple languages in a single session?</li>
+<li>What would you like to see in a shared environment, e.g.&nbsp;pixi (see )</li>
+</ul>
+</section></section>
+<section>
+<section id="bonus-cross-language-publishing" class="title-slide slide level1 center">
+<h1>Bonus: cross-language publishing</h1>
 
 </section>
 <section id="setting-up-gh-pages-branch" class="slide level2">
 <h2>Setting-up <code>gh-pages</code> branch</h2>
 <p>You can do this with a single quarto command:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Which leads to the following text and eventually auto-opens the deployed webiste!</p>
 
 <img data-src="images/paste-4.png" class="r-stretch"></section>
@@ -472,7 +1201,7 @@ Your name <a href="https://orcid.org/0000-0001-5679-6536" class="quarto-title-au
 <p>The previous command creates a <code>gh-pages</code> branch with the slides in the <code>docs</code> folder. This is then automatically deployed to GitHub Pages, and the website is opened in your browser when ready:</p>
 
 <img data-src="images/paste-5.png" class="r-stretch"><p>How awesome is that?</p>
-<h3 id="section-1">🤯🤯🤯</h3>
+<h3 id="section">🤯🤯🤯</h3>
 </section>
 <section id="debugging" class="slide level2">
 <h2>Debugging</h2>
@@ -571,7 +1300,7 @@ Peng, Roger D. 2011. <span>“Reproducible Research in Computational Science.”
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

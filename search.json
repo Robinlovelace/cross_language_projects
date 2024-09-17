@@ -1,17 +1,213 @@
 [
   {
+    "objectID": "slides.html#contents",
+    "href": "slides.html#contents",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Contents",
+    "text": "Contents\n\nIntroduction\nApproaches to cross-language interoperability\nContainerisation\nCross-language pain points\nCross-language priorities"
+  },
+  {
+    "objectID": "slides.html#case-study-for-reference",
+    "href": "slides.html#case-study-for-reference",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Case study for reference",
+    "text": "Case study for reference\n\n\nThe Network Planning Tool for Scotland\n\nDevelopment version (branch dev): nptscot.github.io\nStable version (branch production): www.npt.scot\n\n\n\n\n\nThe NPT web app"
+  },
+  {
+    "objectID": "slides.html#npt-stack",
+    "href": "slides.html#npt-stack",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "NPT stack",
+    "text": "NPT stack\n\n\nBackend: R + targets for ‘cross-language’ data pipeline workflow automation\n\nRelies on Rust crates\nExperiments with Python\n\nFrontend: JS + MapLibre for visualisation\nProgressive Web App (PWA)\n\n\n\n\nMap controls"
+  },
+  {
+    "objectID": "slides.html#user-interface",
+    "href": "slides.html#user-interface",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "User interface",
+    "text": "User interface\n\nLayer Controls"
+  },
+  {
+    "objectID": "slides.html#definitions",
+    "href": "slides.html#definitions",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Definitions",
+    "text": "Definitions\n“Deploying”\n\nCode runs on more than one computer\nResults are published on a website that is maintained\nProject is “in production”\n\nUsers: Hosted on a trusted and well-used website\nPerformance: updates to ‘production’ planned and documented\nMoney changing hands\nExpectations"
+  },
+  {
+    "objectID": "slides.html#deploying-the-npt",
+    "href": "slides.html#deploying-the-npt",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Deploying the NPT",
+    "text": "Deploying the NPT"
+  },
+  {
+    "objectID": "slides.html#deployment-workflow-of-npt",
+    "href": "slides.html#deployment-workflow-of-npt",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Deployment workflow of NPT",
+    "text": "Deployment workflow of NPT\nBased on workflow.yml file for GitHub actions."
+  },
+  {
+    "objectID": "slides.html#high-impact-projects",
+    "href": "slides.html#high-impact-projects",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "“High impact projects”",
+    "text": "“High impact projects”\n\nBroadly: tangible change results from the work\n\nWith measurable impact on environmental, social (or economic?) outcomes\n\nE.g. Reduction in greenhouse gas emissions \nE.g. better diets resulting in more DALYs \n\nIdentifiable ‘pathway to impact’\n\nE.g. New methods -&gt; new evidence -&gt; investment in active travel more effective that it would have been otherwise -&gt; more people cycling -&gt; tangible benefits"
+  },
+  {
+    "objectID": "slides.html#technical-requirements-for-impact",
+    "href": "slides.html#technical-requirements-for-impact",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Technical requirements for impact",
+    "text": "Technical requirements for impact\n\nUsers: The web application has users\nScale: covers a large geographic area needs big data inputs\nTrusted: code review and multiple contributors\nUser-friendly: if it’s going to have lots of users\nFuture proof: technology needs to last a long time\nCommunity: needed to ensure it lasts"
+  },
+  {
     "objectID": "slides.html#why-cross-language-projects",
     "href": "slides.html#why-cross-language-projects",
     "title": "Deploying cross-language in high impact projects",
     "section": "Why cross-language projects?",
-    "text": "Why cross-language projects?\n\na\nb\nc"
+    "text": "Why cross-language projects?\n\nSpecific tool written in a particular language (odjitter)\nRequired for ‘best of both worlds’ (JS for visualisation, R for statistical modelling)\nHaving multiple implementations ensures robustness\n\nAeroplane flight software has 3 implementations\nRedundancy common in mission-critical applications"
   },
   {
-    "objectID": "slides.html#section",
-    "href": "slides.html#section",
+    "objectID": "slides.html#loose-coupling",
+    "href": "slides.html#loose-coupling",
     "title": "Deploying cross-language in high impact projects",
-    "section": "…",
-    "text": "…\nquarto install extension grantmcdermott/quarto-revealjs-clean\nThen replace:\nformat: \n  revealjs: default\nwith:\nformat: \n  clean-revealjs:\n    self-contained: true\nIn the YAML header of your .qmd file."
+    "section": "Loose coupling",
+    "text": "Loose coupling\nExample: odjitter R package\n  msg = glue::glue(\"{odjitter_location} jitter --od-csv-path {od_csv_path} \\\\\n  --zones-path {zones_path} \\\\\n  --zone-name-key {zone_name_key} \\\\\n  --origin-key {origin_key} \\\\\n  --destination-key {destination_key} \\\\\n  --subpoints-origins-path {subpoints_origins_path} \\\\\n  --subpoints-destinations-path {subpoints_destinations_path} \\\\\n  --disaggregation-key {disaggregation_key} \\\\\n  --disaggregation-threshold {disaggregation_threshold} \\\\\n  --rng-seed {rng_seed} \\\\\n  {deduplicate_pairs}  \\\\\n  --output-path {output_path}\")\n  if(show_command) {\n    message(\"command sent to the system:\")\n    cat(msg)\n  }\n  system(msg)\n  res = sf::read_sf(output_path)"
+  },
+  {
+    "objectID": "slides.html#loose-coupling-1",
+    "href": "slides.html#loose-coupling-1",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Loose coupling",
+    "text": "Loose coupling\nExample: qgisprocess R package\nqgis_run &lt;- function(args = character(), ..., env = qgis_env(), path = qgis_path()) {\n  if (is.null(path)) {\n    message(\n      \"The filepath of 'qgis_process' is not present in the package cache, \",\n      \"so the package is not well configured.\\n\",\n      \"Restart R and reload the package; run `qgis_configure()` if needed.\\n\",\n      \"For now, will try to fix it on the fly, but some functionality may not work.\\n\"\n    )\n    path &lt;- qgis_path(query = TRUE, quiet = FALSE)\n    # typically the version will also be missing, so fixing that as well:\n    if (is.null(qgisprocess_cache$version)) {\n      invisible(qgis_version(query = TRUE, quiet = FALSE))\n    }\n  }\n  # workaround for running Windows batch files where arguments have spaces\n  # see https://github.com/r-lib/processx/issues/301\n  if (is_windows()) {\n    withr::with_envvar(\n      env,\n      processx::run(\"cmd.exe\", c(\"/c\", \"call\", path, args), ...),\n    )\n  } else {\n    withr::with_envvar(\n      env,\n      processx::run(path, args, ...)\n    )\n  }\n}"
+  },
+  {
+    "objectID": "slides.html#tight-coupling-1",
+    "href": "slides.html#tight-coupling-1",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Tight coupling 1",
+    "text": "Tight coupling 1\nSource: geoarrow-c\n\n\n# cython: language_level = 3\n# cython: linetrace=True\n\n\n\"\"\"Low-level geoarrow Python bindings.\"\"\"\n\n\nfrom libc.stdint cimport uint8_t, int32_t, int64_t, uintptr_t\nfrom cpython cimport Py_buffer, PyObject\nfrom libcpp cimport bool\nfrom libcpp.string cimport string\n\n\ncdef extern from \"geoarrow_type.h\":\n    struct ArrowSchema:\n        const char* format\n        const char* name\n        const char* metadata\n        int64_t flags\n        int64_t n_children\n        ArrowSchema** children\n        ArrowSchema* dictionary\n        void (*release)(ArrowSchema*)\n        void* private_data"
+  },
+  {
+    "objectID": "slides.html#tight-coupling-2",
+    "href": "slides.html#tight-coupling-2",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Tight coupling 2",
+    "text": "Tight coupling 2\nSource: geoarrow-rs\nuse crate::error::{PyGeoArrowError, PyGeoArrowResult};\nuse crate::{PyCoordType, PyDimension};\n\n\nuse geoarrow::array::CoordType;\nuse geoarrow::datatypes::{Dimension, GeoDataType};\nuse pyo3::exceptions::PyValueError;\nuse pyo3::intern;\nuse pyo3::prelude::*;\nuse pyo3::types::{PyCapsule, PyType};\nuse pyo3_arrow::ffi::to_schema_pycapsule;\nuse pyo3_arrow::PyField;\n\n\n#[pyclass(module = \"geoarrow.rust.core._rust\", name = \"GeometryType\", subclass)]\npub struct PyGeometryType(pub(crate) GeoDataType);\n\n\nimpl PyGeometryType {\n    pub fn new(data_type: GeoDataType) -&gt; Self {\n        Self(data_type)\n    }\n\n\n    /// Import from a raw Arrow C Schema capsules\n    pub fn from_arrow_pycapsule(capsule: &Bound&lt;PyCapsule&gt;) -&gt; PyGeoArrowResult&lt;Self&gt; {\n        PyField::from_arrow_pycapsule(capsule)?.try_into()\n    }\n\n\n    pub fn into_inner(self) -&gt; GeoDataType {\n        self.0\n    }\n}"
+  },
+  {
+    "objectID": "slides.html#tight-coupling-3",
+    "href": "slides.html#tight-coupling-3",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Tight coupling 3",
+    "text": "Tight coupling 3\nSource: RcppExports.R in sf\nCPL_geos_union &lt;- function(sfc, by_feature = FALSE, is_coverage = FALSE) {\n    .Call(`_sf_CPL_geos_union`, sfc, by_feature, is_coverage)\n}\n\n\nCPL_geos_snap &lt;- function(sfc0, sfc1, tolerance) {\n    .Call(`_sf_CPL_geos_snap`, sfc0, sfc1, tolerance)\n}"
+  },
+  {
+    "objectID": "slides.html#tight-coupling-4",
+    "href": "slides.html#tight-coupling-4",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Tight coupling 4",
+    "text": "Tight coupling 4\n\nSource: geos-unary-geometry.R in geos\n#' @rdname geos_centroid\n#' @export\ngeos_unary_union &lt;- function(geom) {\n  geom &lt;- sanitize_geos_geometry(geom)\n  new_geos_geometry(.Call(geos_c_unary_union, geom), crs = attr(geom, \"crs\", exact = TRUE))\n}\n\n\n#' @rdname geos_centroid\n#' @export\ngeos_unary_union_prec &lt;- function(geom, grid_size) {\n  geom &lt;- sanitize_geos_geometry(geom)\n  recycled &lt;- recycle_common(list(geom, sanitize_double(grid_size)))\n  new_geos_geometry(\n    .Call(geos_c_unary_union_prec, recycled[[1]], recycled[[2]]),\n    crs = attr(geom, \"crs\", exact = TRUE)\n  )\n}"
+  },
+  {
+    "objectID": "slides.html#tight-coupling-5",
+    "href": "slides.html#tight-coupling-5",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Tight coupling 5",
+    "text": "Tight coupling 5\n\nSource: geos_functions.jl in LibGEOS.jl\nfunction union(obj1::Geometry, obj2::Geometry, context::GEOSContext = get_context(obj1))\n    result = GEOSUnion_r(context, obj1, obj2)\n    if result == C_NULL\n        error(\"LibGEOS: Error in GEOSUnion\")\n    end\n    geomFromGEOS(result, context)\nend\n\n\nfunction unaryUnion(obj::Geometry, context::GEOSContext = get_context(obj))\n    result = GEOSUnaryUnion_r(context, obj)\n    if result == C_NULL\n        error(\"LibGEOS: Error in GEOSUnaryUnion\")\n    end\n    geomFromGEOS(result, context)\nend"
+  },
+  {
+    "objectID": "slides.html#project-environments",
+    "href": "slides.html#project-environments",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Project environments",
+    "text": "Project environments\npixi init test-project --format pyproject\n✔ Initialized project in ~/test-project\ncd test-project\npixi add geopandas\npixi add --pypi --feature test pytest\npixi install\n✔ Added pytest\nAdded these as pypi-dependencies.\nAdded these only for feature: test\nCross-language support (source: pixi.sh)\npixi add r-ggplot2\nAlthough some issues according to my tests (see prefix-dev/pixi#2066)"
+  },
+  {
+    "objectID": "slides.html#pixi-disk-space-usage",
+    "href": "slides.html#pixi-disk-space-usage",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Pixi disk space usage",
+    "text": "Pixi disk space usage\n114M         ┌── bin                          │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%\n101M         │         ┌── locale-archive.tmpl│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████ │   6%\n101M         │       ┌─┴ locale               │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████ │   6%\n116M         │     ┌─┴ lib64                  │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   7%\n142M         │   ┌─┴ usr                      │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████████ │   8%\n148M         │ ┌─┴ sysroot                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████████ │   8%\n174M         ├─┴ x86_64-conda-linux-gnu       │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████████ │  10%\n245M         │     ┌── 14.1.0                 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%\n245M         │   ┌─┴ x86_64-conda-linux-gnu   │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%\n246M         │ ┌─┴ gcc                        │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%\n246M         ├─┴ libexec                      │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████████ │  14%\n108M         │     ┌── 14.1.0                 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%\n108M         │   ┌─┴ x86_64-conda-linux-gnu   │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%\n108M         │ ┌─┴ gcc                        │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████ │   6%\n341M         │ │ ┌── site-packages            │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████████████████████ │  19%\n391M         │ ├─┴ python3.12                 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████████████████████████ │  22%\n1.0G         ├─┴ lib                          │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████████████████████████████████████████████████████████████████████ │  58%\n1.7G       ┌─┴ default                        │████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ │ 100%\n1.7G     ┌─┴ envs                             │████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ │ 100%\n1.7G   ┌─┴ .pixi"
+  },
+  {
+    "objectID": "slides.html#containerisation",
+    "href": "slides.html#containerisation",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Containerisation",
+    "text": "Containerisation\nSource: github.com/geocompx/docker"
+  },
+  {
+    "objectID": "slides.html#containerisation-2",
+    "href": "slides.html#containerisation-2",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Containerisation 2",
+    "text": "Containerisation 2\nSource: pangeo-data/pangeo-docker-images"
+  },
+  {
+    "objectID": "slides.html#containerisation-3",
+    "href": "slides.html#containerisation-3",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Containerisation 3",
+    "text": "Containerisation 3\nSource: https://github.com/b-data"
+  },
+  {
+    "objectID": "slides.html#bdata-all-images",
+    "href": "slides.html#bdata-all-images",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "bdata: All images",
+    "text": "bdata: All images\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR\nPython\nJupyter Hub\nJupyter Lab\ncode‑server (Code)\nRStudio\nNeovim\nGit\nGit LFS\nPandoc\nCRAN date\nLinux distro\n\n\n\n\n4.4.1\n3.12.6\n5.1.0\n4.2.5\n4.92.2 (1.92.2)\n2024.04.2+764\n0.10.1\n2.46.1\n3.5.1\n3.2\n\nDebian 12\n\n\n4.4.0\n3.12.4\n5.0.0\n4.2.2\n4.90.0 (1.90.0)\n2024.04.2+764\nn/a\n2.45.2\n3.5.1\n3.1.11\n2024‑06‑14\nDebian 12\n\n\n4.3.3\n3.11.9\n4.1.5\n4.1.6\n4.23.0 (1.88.0)\nn/a\nn/a\n2.44.0\n3.5.1\n3.1.11\n2024‑04‑24\nDebian 12\n\n\n4.3.2\n3.11.8\n4.0.2\n4.1.2\n4.21.2 (1.86.2)\nn/a\nn/a\n2.44.0\n3.4.1\n3.1.11\n2024‑02‑29\nDebian 12\n\n\n4.3.1\n3.11.6\n4.0.2\n3.6.6\n4.18.0 (1.83.1)\nn/a\nn/a\n2.42.0\n3.4.0\n3.1.1\n2023‑10‑31\nDebian 12\n\n\n4.3.0\n3.11.4\n4.0.1\n3.6.4\n4.13.0 (1.78.2)\nn/a\nn/a\n2.41.0\n3.3.0\n3.1.1\nn/a\nDebian 12\n\n\n4.2.3\n3.10.11\n4.0.0\n3.6.3\n4.9.1 (1.73.1)\nn/a\nn/a\n2.40.0\n3.3.0\n2.19.2\nn/a\nDebian 11\n\n\n4.2.2\n3.10.10\n3.1.1\n3.6.1\n4.9.1 (1.73.1)\nn/a\nn/a\n2.40.0\n3.3.0\n2.19.2\nn/a\nDebian 11\n\n\n4.2.1\n3.9.2\n2.3.1\n3.5.0\n4.8.1 (1.72.1)\nn/a\nn/a\n2.38.1\n3.2.0\n2.19.2\nn/a\nDebian 11\n\n\n4.2.0\n3.9.2\n2.3.1\n3.4.3\n4.4.0 (1.66.2)\nn/a\nn/a\n2.36.1\n3.2.0\n2.18\nn/a\nDebian 11"
+  },
+  {
+    "objectID": "slides.html#bdata-verse-images",
+    "href": "slides.html#bdata-verse-images",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "bdata: verse+ images",
+    "text": "bdata: verse+ images\n\n\n\nR\nCTAN date\nQuarto\n\n\n\n\n4.4.1\n\n1.5.57\n\n\n4.4.0\n2024‑06‑14\n1.4.555\n\n\n4.3.3\n2024‑04‑24\n1.4.553\n\n\n4.3.2\n2024‑02‑29\n1.4.550\n\n\n4.3.1\n2023‑10‑31\n1.3.450\n\n\n4.3.0\n2023‑06‑16\n1.3.361\n\n\n4.2.3\n2023‑04‑21\n1.2.475[^1]\n\n\n4.2.2\n2023‑03‑15\n1.2.335[^1]\n\n\n4.2.1\n2022‑10‑31\n1.1.251[^1]\n\n\n4.2.0\n2022‑06‑23\nn/a"
+  },
+  {
+    "objectID": "slides.html#bdata-qgisprocess-images",
+    "href": "slides.html#bdata-qgisprocess-images",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "bdata: qgisprocess images",
+    "text": "bdata: qgisprocess images\n\n\n\nR\nQGIS\nSAGA\nOTB[^1]\n\n\n\n\n4.4.1\n3.38.3\n9.1.3\n9.0.0\n\n\n4.4.0\n3.36.3\n9.1.3\n9.0.0\n\n\n4.3.3\n3.36.2\n9.1.3\n9.0.0\n\n\n4.3.2\n3.36.0\n9.1.3\n8.1.2\n\n\n4.3.1\n3.34.0\n9.1.3\n8.1.2\n\n\n4.3.0\n3.30.3\n8.5.0\n8.1.1\n\n\n4.2.3\nn/a\nn/a\nn/a\n\n\n4.2.2\nn/a\nn/a\nn/a\n\n\n4.2.1\nn/a\nn/a\nn/a\n\n\n4.2.0\nn/a\nn/a\nn/a"
+  },
+  {
+    "objectID": "slides.html#bdata-demo",
+    "href": "slides.html#bdata-demo",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "bdata: demo",
+    "text": "bdata: demo\nSource: https://github.com/b-data/jupyterlab-r-docker-stack/tree/main?tab=readme-ov-file\ndocker run -it --rm \\\n  -p 8888:8888 \\\n  -u root \\\n  -v \"${PWD}/jupyterlab-jovyan\":/home/jovyan \\\n  -e NB_UID=$(id -u) \\\n  -e NB_GID=$(id -g) \\\n  -e CHOWN_HOME=yes \\\n  -e CHOWN_HOME_OPTS='-R' \\\n  glcr.b-data.ch/jupyterlab/r/geospatial"
+  },
+  {
+    "objectID": "slides.html#rocker-images-on-which-geocompx-docker-builds",
+    "href": "slides.html#rocker-images-on-which-geocompx-docker-builds",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Rocker images (on which geocompx docker builds):",
+    "text": "Rocker images (on which geocompx docker builds):\n\n\nThe Docker images built from this repository describe the software installation method in standalone scripts rather than directly in the Dockerfiles. These files are under the scripts directory, and these files are copied in all Docker images, under a top-level /rocker_scripts directory. This allows users to extend images by selecting additional modules to install on top of any pre-built images.\n\nE.g.\nFROM rocker/rstudio:4.0.0\nRUN /rocker_scripts/install_python.sh\nRUN /rocker_scripts/install_julia.sh"
+  },
+  {
+    "objectID": "slides.html#too-many-options-ide",
+    "href": "slides.html#too-many-options-ide",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Too many options: IDE",
+    "text": "Too many options: IDE\n\nVSCode is market leader with strong community\n\nPro: many extensions\nPro: Live Share\nPro: GitHub integration (including copilot)\nPro: devcontainers work out-of-the-box\nCon: setup time, can be intimidating\n\nPositron\n\nPro: More batteries included\nCon: Missing great VSCode features (e.g. Live Share)\nCon: Early days, fewer developers\nThought: why didn’t they put energy into great extensions for modularity?\n\nRStudio, Jupyter Lab, Zed, …"
+  },
+  {
+    "objectID": "slides.html#resource-requirements",
+    "href": "slides.html#resource-requirements",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Resource requirements",
+    "text": "Resource requirements\n\nEach new environment can take up a few GB of space\nLack of shared binaries, could be overcome by pixi and judicious use of Docker containers\nHeadspace requirements of learning new syntax and quirks"
+  },
+  {
+    "objectID": "slides.html#interactive-session",
+    "href": "slides.html#interactive-session",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Interactive session",
+    "text": "Interactive session\n\nWhat would your top ask be to use multiple languages in a single session?\nWhat would you like to see in a shared environment, e.g. pixi (see )"
   },
   {
     "objectID": "slides.html#setting-up-gh-pages-branch",
@@ -65,7 +261,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Reproducible slides with Quarto and continuous deployment via GitHub actions",
+    "title": "Deploying cross-language",
     "section": "",
     "text": "The materials here support a talk at the Spatial Data Science across Languages (SDSL) conference 2024.\nSee the slides here and in the dropdown menu above.\nSee the source code at github.com/robinlovelace."
   }
