@@ -114,10 +114,37 @@ Based on [workflow.yml file for](https://github.com/nptscot/nptscot.github.io/bl
 
 # Approaches to cross-language projects
 
+Checked boxes indicate approaches used in the NPT project.
+
 - [x] "Loose coupling" (system calls)
 - [x] "Tight coupling" with low-level code embedded in R/Python/other packages (e.g. `sf`, `rsgeo`, `shapely`)
 - [ ] Project environments (e.g. `pixi`, `mamba` [`rix`](https://docs.ropensci.org/rix/))
-- [ ] Containerisation
+- [x] Containerisation
+
+## Loose coupling
+
+Example: [`odjitter`](https://github.com/dabreegster/odjitter/blob/98a7a6e03bc54bc79d3b3abbde91b6f79173ff1a/r/R/jitter.R#L163C1-L180C33) R package
+
+```r
+  msg = glue::glue("{odjitter_location} jitter --od-csv-path {od_csv_path} \\
+  --zones-path {zones_path} \\
+  --zone-name-key {zone_name_key} \\
+  --origin-key {origin_key} \\
+  --destination-key {destination_key} \\
+  --subpoints-origins-path {subpoints_origins_path} \\
+  --subpoints-destinations-path {subpoints_destinations_path} \\
+  --disaggregation-key {disaggregation_key} \\
+  --disaggregation-threshold {disaggregation_threshold} \\
+  --rng-seed {rng_seed} \\
+  {deduplicate_pairs}  \\
+  --output-path {output_path}")
+  if(show_command) {
+    message("command sent to the system:")
+    cat(msg)
+  }
+  system(msg)
+  res = sf::read_sf(output_path)
+```
 
 
 # Publishing
