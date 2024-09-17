@@ -146,6 +146,216 @@ Example: [`odjitter`](https://github.com/dabreegster/odjitter/blob/98a7a6e03bc54
   res = sf::read_sf(output_path)
 ```
 
+## Loose coupling
+
+Example: [`qgisprocess` R package](https://github.com/r-spatial/qgisprocess/blob/702358e5849b38a9ce8550ee0f8b465c902d59d4/R/qgis-run.R#L26-L53)
+
+```r
+qgis_run <- function(args = character(), ..., env = qgis_env(), path = qgis_path()) {
+  if (is.null(path)) {
+    message(
+      "The filepath of 'qgis_process' is not present in the package cache, ",
+      "so the package is not well configured.\n",
+      "Restart R and reload the package; run `qgis_configure()` if needed.\n",
+      "For now, will try to fix it on the fly, but some functionality may not work.\n"
+    )
+    path <- qgis_path(query = TRUE, quiet = FALSE)
+    # typically the version will also be missing, so fixing that as well:
+    if (is.null(qgisprocess_cache$version)) {
+      invisible(qgis_version(query = TRUE, quiet = FALSE))
+    }
+  }
+  # workaround for running Windows batch files where arguments have spaces
+  # see https://github.com/r-lib/processx/issues/301
+  if (is_windows()) {
+    withr::with_envvar(
+      env,
+      processx::run("cmd.exe", c("/c", "call", path, args), ...),
+    )
+  } else {
+    withr::with_envvar(
+      env,
+      processx::run(path, args, ...)
+    )
+  }
+}
+```
+
+## Tight coupling 1
+
+Source: [`geoarrow-c`](https://github.com/geoarrow/geoarrow-c/blob/main/python/geoarrow-c/src/geoarrow/c/_lib.pyx#L1-L22)
+
+```py
+
+
+# cython: language_level = 3
+# cython: linetrace=True
+
+
+"""Low-level geoarrow Python bindings."""
+
+
+from libc.stdint cimport uint8_t, int32_t, int64_t, uintptr_t
+from cpython cimport Py_buffer, PyObject
+from libcpp cimport bool
+from libcpp.string cimport string
+
+
+cdef extern from "geoarrow_type.h":
+    struct ArrowSchema:
+        const char* format
+        const char* name
+        const char* metadata
+        int64_t flags
+        int64_t n_children
+        ArrowSchema** children
+        ArrowSchema* dictionary
+        void (*release)(ArrowSchema*)
+        void* private_data
+```
+
+## Tight coupling 2
+
+Source: [`geoarrow-rs`](https://github.com/geoarrow/geoarrow-rs/blob/db06a8bf4b591b38fc164c29be86c630108751f6/python/pyo3-geoarrow/src/data_type.rs#L1-L29)
+
+```rust
+use crate::error::{PyGeoArrowError, PyGeoArrowResult};
+use crate::{PyCoordType, PyDimension};
+
+
+use geoarrow::array::CoordType;
+use geoarrow::datatypes::{Dimension, GeoDataType};
+use pyo3::exceptions::PyValueError;
+use pyo3::intern;
+use pyo3::prelude::*;
+use pyo3::types::{PyCapsule, PyType};
+use pyo3_arrow::ffi::to_schema_pycapsule;
+use pyo3_arrow::PyField;
+
+
+#[pyclass(module = "geoarrow.rust.core._rust", name = "GeometryType", subclass)]
+pub struct PyGeometryType(pub(crate) GeoDataType);
+
+
+impl PyGeometryType {
+    pub fn new(data_type: GeoDataType) -> Self {
+        Self(data_type)
+    }
+
+
+    /// Import from a raw Arrow C Schema capsules
+    pub fn from_arrow_pycapsule(capsule: &Bound<PyCapsule>) -> PyGeoArrowResult<Self> {
+        PyField::from_arrow_pycapsule(capsule)?.try_into()
+    }
+
+
+    pub fn into_inner(self) -> GeoDataType {
+        self.0
+    }
+}
+```
+
+## Tight coupling 3
+
+Source: [`RcppExports.R` in `sf`](https://github.com/r-spatial/sf/blob/35f5f8be44e1923d242a489b51d7c58b8397a2a9/R/RcppExports.R#L212-L218)
+
+```r
+CPL_geos_union <- function(sfc, by_feature = FALSE, is_coverage = FALSE) {
+    .Call(`_sf_CPL_geos_union`, sfc, by_feature, is_coverage)
+}
+
+
+CPL_geos_snap <- function(sfc0, sfc1, tolerance) {
+    .Call(`_sf_CPL_geos_snap`, sfc0, sfc1, tolerance)
+}
+```
+
+## Tight coupling 4
+
+<!-- https://github.com/paleolimbot/geos/blob/HEAD/R/geos-unary-geometry.R#L153-L169 -->
+
+Source: [`geos-unary-geometry.R` in `geos`](https://github.com/paleolimbot/geos/blob/HEAD/R/geos-unary-geometry.R#L153-L169)
+
+```r
+#' @rdname geos_centroid
+#' @export
+geos_unary_union <- function(geom) {
+  geom <- sanitize_geos_geometry(geom)
+  new_geos_geometry(.Call(geos_c_unary_union, geom), crs = attr(geom, "crs", exact = TRUE))
+}
+
+
+#' @rdname geos_centroid
+#' @export
+geos_unary_union_prec <- function(geom, grid_size) {
+  geom <- sanitize_geos_geometry(geom)
+  recycled <- recycle_common(list(geom, sanitize_double(grid_size)))
+  new_geos_geometry(
+    .Call(geos_c_unary_union_prec, recycled[[1]], recycled[[2]]),
+    crs = attr(geom, "crs", exact = TRUE)
+  )
+}
+```
+
+## Tight coupling 5
+
+<!-- https://github.com/JuliaGeo/LibGEOS.jl/blob/91f69c04843f02a995c5df54b0186891534a2ef4/src/geos_functions.jl#L712-L726 -->
+
+Source: [`geos_functions.jl` in `LibGEOS.jl`](https://github.com/JuliaGeo/LibGEOS.jl/blob/91f69c04843f02a995c5df54b0186891534a2ef4/src/geos_functions.jl#L712-L726)
+
+```julia
+function union(obj1::Geometry, obj2::Geometry, context::GEOSContext = get_context(obj1))
+    result = GEOSUnion_r(context, obj1, obj2)
+    if result == C_NULL
+        error("LibGEOS: Error in GEOSUnion")
+    end
+    geomFromGEOS(result, context)
+end
+
+
+function unaryUnion(obj::Geometry, context::GEOSContext = get_context(obj))
+    result = GEOSUnaryUnion_r(context, obj)
+    if result == C_NULL
+        error("LibGEOS: Error in GEOSUnaryUnion")
+    end
+    geomFromGEOS(result, context)
+end
+```
+
+## Project environments
+
+```bash
+pixi init test-project --format pyproject
+```
+
+```
+✔ Initialized project in ~/test-project
+```
+
+```bash
+cd test-project
+pixi add geopandas
+pixi add --pypi --feature test pytest
+pixi install
+```
+
+```
+✔ Added pytest
+Added these as pypi-dependencies.
+Added these only for feature: test
+```
+
+Cross-language support (source: [pixi.sh](https://pixi.sh/latest/ide_integration/r_studio/))
+
+```bash
+pixi add r-ggplot2
+```
+Although some issues according to my tests (see [prefix-dev/pixi#2066](https://github.com/prefix-dev/pixi/issues/2066))
+
+## Containerisation
+
+
+
 
 # Publishing
 
