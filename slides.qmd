@@ -2,8 +2,8 @@
 title: Deploying cross-language in high impact projects
 format: 
   revealjs: default
-  # clean-revealjs:
-  #   self-contained: true
+  clean-revealjs:
+    self-contained: true
 html-math-method:
   method: mathjax
   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
@@ -16,7 +16,94 @@ date: last-modified
 bibliography: references.bib
 ---
 
+
 # Introduction
+
+## Contents
+
+- Introduction
+- Approaches to cross-language interoperability
+- Containerisation
+- Cross-language pain points
+- Cross-language priorities
+
+## Case study for reference
+
+:::: columns
+
+::: {.column width="50%"}
+
+The Network Planning Tool for Scotland
+
+- Development version (branch `dev`): [nptscot.github.io](https://nptscot.github.io/)
+- Stable version (branch `production`): [www.npt.scot](https://www.npt.scot/)
+
+:::
+
+::: {.column width="50%"}
+
+![The NPT web app](/images/basemaps.png)
+
+
+:::
+
+::::
+
+## NPT stack
+
+:::: columns
+::: {.column}
+Backend: R + targets for 'cross-language' data pipeline workflow automation
+
+- Relies on Rust crates
+- Experiments with Python
+
+Frontend: JS + MapLibre for visualisation
+
+Progressive Web App (PWA)
+:::
+::: {.column}
+![Map controls](/images/map_controls.png)
+:::
+::::
+
+## User interface
+
+![Layer Controls](/images/layer_controls.png)
+
+## Definitions
+
+### "Deploying"
+
+- Code runs on more than one computer
+- Results are published on a website that is maintained
+- Project is "in production"
+  - Users: Hosted on a trusted and well-used website
+  - Performance: updates to 'production' planned and documented
+  - Money changing hands
+  - Expectations
+
+## Deploying the NPT
+
+TODO: add screenshot of NPT branches?
+
+## Deployment workflow of NPT
+
+## "High impact projects"
+
+- Broadly: tangible change results from the work
+  - With measurable impact on environmental, social (or economic?) outcomes
+    - E.g. Reduction in greenhouse gas emissions
+    <!-- (accounting for 'rebound' effects) -->
+    - E.g. better diets resulting in more DALYs 
+    <!-- (disability-adjusted life years) -->
+  - Identifiable 'pathway to impact'
+    - E.g. New methods -> new evidence -> investment in active travel more effective that it would have been otherwise -> more people cycling -> tangible benefits
+
+## Technical requirements for impact
+
+
+- The results are in production product has users
 
 ## Why cross-language projects?
 
@@ -47,7 +134,7 @@ format:
 
 In the YAML header of your `.qmd` file.
 
-# Publishing slides
+# Publishing
 
 ## Setting-up `gh-pages` branch
 
