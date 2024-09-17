@@ -16,56 +16,49 @@ date: last-modified
 bibliography: references.bib
 ---
 
-
 # Introduction
 
 ## Contents
 
-- Introduction
-- Approaches to cross-language interoperability
-- Containerisation
-- Cross-language pain points
-- Cross-language priorities
+-   Introduction
+-   Approaches to cross-language interoperability
+-   Containerisation
+-   Cross-language pain points
+-   Cross-language priorities
 
 ## Case study for reference
 
-:::: columns
-
+::::: columns
 ::: {.column width="50%"}
-
 The Network Planning Tool for Scotland
 
-- Development version (branch `dev`): [nptscot.github.io](https://nptscot.github.io/)
-- Stable version (branch `production`): [www.npt.scot](https://www.npt.scot/)
-
+-   Development version (branch `dev`): [nptscot.github.io](https://nptscot.github.io/)
+-   Stable version (branch `production`): [www.npt.scot](https://www.npt.scot/)
 :::
 
 ::: {.column width="50%"}
-
 ![The NPT web app](/images/basemaps.png)
-
-
 :::
-
-::::
+:::::
 
 ## NPT stack
 
-:::: columns
-::: {.column}
+::::: columns
+::: column
 Backend: R + targets for 'cross-language' data pipeline workflow automation
 
-- Relies on Rust crates
-- Experiments with Python
+-   Relies on Rust crates
+-   Experiments with Python
 
 Frontend: JS + MapLibre for visualisation
 
 Progressive Web App (PWA)
 :::
-::: {.column}
+
+::: column
 ![Map controls](/images/map_controls.png)
 :::
-::::
+:::::
 
 ## User interface
 
@@ -75,64 +68,57 @@ Progressive Web App (PWA)
 
 ### "Deploying"
 
-- Code runs on more than one computer
-- Results are published on a website that is maintained
-- Project is "in production"
-  - Users: Hosted on a trusted and well-used website
-  - Performance: updates to 'production' planned and documented
-  - Money changing hands
-  - Expectations
+-   Code runs on more than one computer
+-   Results are published on a website that is maintained
+-   Project is "in production"
+    -   Users: Hosted on a trusted and well-used website
+    -   Performance: updates to 'production' planned and documented
+    -   Money changing hands
+    -   Expectations
 
 ## Deploying the NPT
 
-TODO: add screenshot of NPT branches?
+![](images/paste-7.png)
 
 ## Deployment workflow of NPT
 
+Based on [workflow.yml file for](https://github.com/nptscot/nptscot.github.io/blob/production/.github/workflows/azure-static-web-apps-wonderful-beach-0edb91e03.yml) GitHub actions.
+
+![](images/paste-8.png)
+
 ## "High impact projects"
 
-- Broadly: tangible change results from the work
-  - With measurable impact on environmental, social (or economic?) outcomes
-    - E.g. Reduction in greenhouse gas emissions
-    <!-- (accounting for 'rebound' effects) -->
-    - E.g. better diets resulting in more DALYs 
-    <!-- (disability-adjusted life years) -->
-  - Identifiable 'pathway to impact'
-    - E.g. New methods -> new evidence -> investment in active travel more effective that it would have been otherwise -> more people cycling -> tangible benefits
+-   Broadly: tangible change results from the work
+    -   With measurable impact on environmental, social (or economic?) outcomes
+        -   E.g. Reduction in greenhouse gas emissions <!-- (accounting for 'rebound' effects) -->
+        -   E.g. better diets resulting in more DALYs <!-- (disability-adjusted life years) -->
+    -   Identifiable 'pathway to impact'
+        -   E.g. New methods -\> new evidence -\> investment in active travel more effective that it would have been otherwise -\> more people cycling -\> tangible benefits
 
 ## Technical requirements for impact
 
-
-- The results are in production product has users
+-   Users: The web application has users
+-   Scale: covers a large geographic area needs big data inputs
+-   Trusted: code review and multiple contributors
+-   User-friendly: if it's going to have lots of users
+-   Future proof: technology needs to last a long time
+-   Community: needed to ensure it lasts
 
 ## Why cross-language projects?
 
--   a
--   b
--   c
+-   Specific tool written in a particular language (`odjitter`)
+-   Required for 'best of both worlds' (JS for visualisation, R for statistical modelling)
+-   Having multiple implementations ensures robustness
+    -   Aeroplane flight software has 3 implementations
+    -   Redundancy common in mission-critical applications
 
-## ...
+# Approaches to cross-language projects
 
-``` sh
-quarto install extension grantmcdermott/quarto-revealjs-clean
-```
+- [x] "Loose coupling" (system calls)
+- [x] "Tight coupling" with low-level code embedded in R/Python/other packages (e.g. `sf`, `rsgeo`, `shapely`)
+- [ ] Project environments (e.g. `pixi`, `mamba` [`rix`](https://docs.ropensci.org/rix/))
+- [ ] Containerisation
 
-Then replace:
-
-```         
-format: 
-  revealjs: default
-```
-
-with:
-
-```         
-format: 
-  clean-revealjs:
-    self-contained: true
-```
-
-In the YAML header of your `.qmd` file.
 
 # Publishing
 
