@@ -8,10 +8,10 @@ html-math-method:
   method: mathjax
   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 author:
-  - name: Your name
+  - name: Robin Lovelace
     orcid: 0000-0001-5679-6536
-    email: e.mail@leeds.ac.uk
-    affiliations: xyz
+    email: rob00 x at gmail dot com
+    affiliations: University of Leeds, Active Travel England
 date: last-modified
 bibliography: references.bib
 ---
