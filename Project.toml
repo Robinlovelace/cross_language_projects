@@ -1,0 +1,7 @@
+[deps]
+AlgebraOfGraphics = "cbdf2221-f076-402e-a563-3d30da359d67"
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+GeoDataFrames = "62cb38b5-d8d2-4862-a48e-6a340996859f"
+GeoInterface = "cf35fbd7-0cd7-5166-be24-54bfbe79505f"
+GeoMakie = "db073c08-6b98-4ee5-b6a4-5efafb3259c6"
+GeometryOps = "3251bfac-6a57-4b6d-aa61-ac1fef2975ab"
