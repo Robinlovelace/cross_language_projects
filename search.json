@@ -70,6 +70,13 @@
     "text": "Why cross-language projects?\n\nSpecific tool written in a particular language (odjitter)\nRequired for ‘best of both worlds’ (JS for visualisation, R for statistical modelling)\nHaving multiple implementations ensures robustness\n\nAeroplane flight software has 3 implementations\nRedundancy common in mission-critical applications"
   },
   {
+    "objectID": "slides.html#comparing-approaches",
+    "href": "slides.html#comparing-approaches",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Comparing approaches",
+    "text": "Comparing approaches"
+  },
+  {
     "objectID": "slides.html#loose-coupling",
     "href": "slides.html#loose-coupling",
     "title": "Deploying cross-language in high impact projects",
