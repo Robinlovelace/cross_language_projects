@@ -8,6 +8,8 @@ name: Quarto Publish
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/geocompx/docker:rust
     permissions:
       contents: write
     steps:
