@@ -301,13 +301,6 @@
     "text": "Support in IDEs"
   },
   {
-    "objectID": "paper.html",
-    "href": "paper.html",
-    "title": "",
-    "section": "",
-    "text": "This is a placeholder for a paper."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Deploying cross-language in high impact projects",
@@ -320,5 +313,19 @@
     "title": "Deploying cross-language in high impact projects",
     "section": "Setup",
     "text": "Setup\nTo setup the repo the following commands were used\ngh repo create # create the repo on github\n\n# Take snapshot with renv:\nrenv::snapshot()\n\nLoad the renv with this (also in .Rprofile):\n\nsource(\"renv/activate.R\")\n\n\n# make renv pick-up rmarkdown dep:\nlibrary(rmarkdown)\nlibrary(knitr)\n\nInstall Python packages with:\n\n# reticulate::install_python()\nreticulate::py_install(\"geopandas\")\n\nUsing Python: /usr/bin/python3.12\nCreating virtual environment '~/.virtualenvs/r-reticulate' ... \n\n\n+ /usr/bin/python3.12 -m venv /home/runner/.virtualenvs/r-reticulate\n\n\nDone!\nInstalling packages: pip, wheel, setuptools\n\n\n+ /home/runner/.virtualenvs/r-reticulate/bin/python -m pip install --upgrade pip wheel setuptools\n\n\nVirtual environment '~/.virtualenvs/r-reticulate' successfully created.\nUsing virtual environment '~/.virtualenvs/r-reticulate' ...\n\n\n+ /home/runner/.virtualenvs/r-reticulate/bin/python -m pip install --upgrade --no-user geopandas\n\nreticulate::py_install(\"matplotlib\")\n\nUsing virtual environment '/home/runner/.virtualenvs/r-reticulate' ...\n\n\n+ /home/runner/.virtualenvs/r-reticulate/bin/python -m pip install --upgrade --no-user matplotlib"
+  },
+  {
+    "objectID": "paper.html",
+    "href": "paper.html",
+    "title": "",
+    "section": "",
+    "text": "This is a placeholder for a paper."
+  },
+  {
+    "objectID": "demo.html",
+    "href": "demo.html",
+    "title": "",
+    "section": "",
+    "text": "RPython\n\n\n\nlibrary(sf)\n\nLinking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE\n\nsf::write_sf(spData::world, \"world.gpkg\")\nplot(spData::world)\n\nWarning: plotting the first 9 out of 10 attributes; use max.plot = 10 to plot\nall\n\n\n\n\n\n\n\n\n\n\n\n\nimport geopandas as gpd\nworld = gpd.read_file('world.gpkg')\nworld.plot()\n\n\n\n\n\n\n\n\n\n\n\n\nRPython\n\n\n\n# Test 1\n\n\n\n\n# Test 2"
   }
 ]
