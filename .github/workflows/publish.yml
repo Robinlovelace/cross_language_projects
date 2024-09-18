@@ -29,6 +29,9 @@ jobs:
         uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 1
+      
+      - name: Install rmarkdown
+        run: Rscript -e 'install.packages("rmarkdown")'
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
