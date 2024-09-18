@@ -16,13 +16,6 @@ date: last-modified
 bibliography: references.bib
 ---
 
-```{r}
-#| include: false
-# make renv pick-up rmarkdown dep:
-library(rmarkdown)
-library(knitr)
-```
-
 # Introduction
 
 ## Contents
