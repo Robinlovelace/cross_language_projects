@@ -16,8 +16,6 @@ date: last-modified
 bibliography: references.bib
 ---
 
-{{< include _setup.qmd >}}
-
 # Introduction
 
 ## Contents
