@@ -46,3 +46,36 @@ gh repo create # create the repo on github
 # Take snapshot with renv:
 renv::snapshot()
 ```
+
+Load the renv with this (also in .Rprofile):
+
+``` r
+source("renv/activate.R")
+```
+
+    - The project is out-of-sync -- use `renv::status()` for details.
+
+``` r
+# make renv pick-up rmarkdown dep:
+library(rmarkdown)
+library(knitr)
+```
+
+Install Python packages with:
+
+``` r
+# reticulate::install_python()
+reticulate::py_install("geopandas")
+```
+
+    Using virtual environment '/home/robin/.virtualenvs/r-reticulate' ...
+
+    + /home/robin/.virtualenvs/r-reticulate/bin/python -m pip install --upgrade --no-user geopandas
+
+``` r
+reticulate::py_install("matplotlib")
+```
+
+    Using virtual environment '/home/robin/.virtualenvs/r-reticulate' ...
+
+    + /home/robin/.virtualenvs/r-reticulate/bin/python -m pip install --upgrade --no-user matplotlib
