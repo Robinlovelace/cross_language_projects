@@ -26,11 +26,11 @@ jobs:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v2
-          with:
-            cache-version: 2
-            extra-packages: |
-              any::tibble
-              any::quarto
+        with:
+          cache-version: 2
+          extra-packages: |
+            any::tibble
+            any::quarto
       
       - name: Install rmarkdown
         run: Rscript -e 'install.packages(c("knitr", "rmarkdown"))'
