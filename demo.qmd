@@ -28,10 +28,11 @@ using GeoDataFrames
 world = GeoDataFrames.read("world.gpkg")
 ```
 ```{julia}
-using CairoMakie, GeoMakie
-f, a, p = poly(world.geometry)
-poly(f[1, 2], world.geometry; color = world.pop, axis = (; type = GeoAxis,))
-f
+# using CairoMakie, GeoMakie
+# f, a, p = poly(world.geom)
+# poly(f[1, 2], world.geom; axis=(; type=GeoAxis,))
+using Plots
+plot(world.geom)
 ```
 
 :::

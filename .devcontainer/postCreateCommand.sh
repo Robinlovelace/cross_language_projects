@@ -56,3 +56,6 @@ ls -hal ~/.cargo/bin/odjitter
 sudo ln -s ~/.cargo/bin/odjitter /usr/local/bin/odjitter
 
 sudo apt install gh
+
+# Install Julia
+curl -fsSL https://install.julialang.org | sh -s -- --yes --default-channel 1.10
