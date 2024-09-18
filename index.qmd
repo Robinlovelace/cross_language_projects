@@ -2,6 +2,7 @@
 title: Deploying cross-language in high impact projects
 ---
 
+{{< include _setup.qmd >}}
 
 The materials here support a talk at the [Spatial Data Science across Languages (SDSL)](https://spatial-data-science.github.io/2024/) conference 2024.
 
@@ -55,7 +56,6 @@ library(knitr)
 Install Python packages with:
 
 ```{r}
-# reticulate::install_python()
 reticulate::py_install("geopandas")
 reticulate::py_install("matplotlib")
 ```
@@ -67,5 +67,4 @@ Activate the Julia environment:
 using Pkg
 Pkg.activate(".")
 Pkg.instantiate()
-# Pkg.add(["GeoDataFrames", "GeoInterface", "GeoMakie", "AlgebraOfGraphics", "CairoMakie"])
 ```

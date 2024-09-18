@@ -1,4 +1,4 @@
-
+{{< include _setup.qmd >}}
 
 ::: {.panel-tabset group="language"}
 

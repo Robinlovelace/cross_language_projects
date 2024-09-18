@@ -1,0 +1,24 @@
+```{r}
+#| include: false
+source("renv/activate.R")
+```
+
+```{r}
+#| include: false
+library(rmarkdown)
+library(knitr)
+```
+
+
+```{r}
+#| include: false
+reticulate::py_install("geopandas")
+reticulate::py_install("matplotlib")
+```
+
+```{julia}
+#| include: false
+using Pkg
+Pkg.activate(".")
+Pkg.instantiate()
+```
