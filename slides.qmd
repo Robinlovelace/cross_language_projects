@@ -139,7 +139,7 @@ message("Hello world")
 
 ## Python
 
-``` python
+```{python}
 import geopandas as gpd
 print("Hello world")
 ```
@@ -550,6 +550,8 @@ RUN /rocker_scripts/install_julia.sh
 # Bonus: cross-language publishing
 
 ## Quickstart: .devcontainer in GitHub codespaces
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Robinlovelace/cross_language_projects)
 
 ![](images/paste-13.png)
 
