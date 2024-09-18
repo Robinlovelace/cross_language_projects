@@ -20,6 +20,20 @@ world = gpd.read_file('world.gpkg')
 world.plot()
 ```
 
+## Julia
+
+```{julia}
+#| echo: true
+using GeoDataFrames
+world = GeoDataFrames.read("world.gpkg")
+```
+```{julia}
+using CairoMakie, GeoMakie
+f, a, p = poly(world.geometry)
+poly(f[1, 2], world.geometry; color = world.pop, axis = (; type = GeoAxis,))
+f
+```
+
 :::
 
 ::: {.panel-tabset group="language"}

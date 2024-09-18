@@ -59,3 +59,13 @@ Install Python packages with:
 reticulate::py_install("geopandas")
 reticulate::py_install("matplotlib")
 ```
+
+Activate the Julia environment:
+
+```{julia}
+#| echo: false
+using Pkg
+Pkg.activate(".")
+Pkg.instantiate()
+# Pkg.add(["GeoDataFrames", "GeoInterface", "GeoMakie", "AlgebraOfGraphics", "CairoMakie"])
+```
