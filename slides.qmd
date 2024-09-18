@@ -561,6 +561,40 @@ RUN /rocker_scripts/install_julia.sh
 
 ![](images/paste-13.png)
 
+## Cross-language tabsets
+
+```         
+::: {.panel-tabset group="language"}
+...
+:::
+```
+
+![](images/paste-14.png)
+
+## Output
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{r}
+#| echo: true
+library(sf)
+sf::write_sf(spData::world, "world.gpkg")
+plot(spData::world)
+```
+
+## Python
+
+```{python}
+#| echo: true
+import geopandas as gpd
+world = gpd.read_file('world.gpkg')
+world.plot()
+```
+
+:::
+
 ## Setting-up `gh-pages` branch
 
 You can do this with a single quarto command:
