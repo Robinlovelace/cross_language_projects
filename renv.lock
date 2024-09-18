@@ -546,6 +546,34 @@
       ],
       "Hash": "ad57b543f7c3fca05213ba78ff63df9b"
     },
+    "sp": {
+      "Package": "sp",
+      "Version": "2.1-4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "grDevices",
+        "graphics",
+        "grid",
+        "lattice",
+        "methods",
+        "stats",
+        "utils"
+      ],
+      "Hash": "75940133cca2e339afce15a586f85b11"
+    },
+    "spData": {
+      "Package": "spData",
+      "Version": "2.3.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "sp"
+      ],
+      "Hash": "49704afce6839b2ac1c82c098feb7cc7"
+    },
     "tinytex": {
       "Package": "tinytex",
       "Version": "0.52",

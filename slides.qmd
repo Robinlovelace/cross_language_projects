@@ -16,6 +16,12 @@ date: last-modified
 bibliography: references.bib
 ---
 
+```{r}
+#| include: false
+# make renv pick-up rmarkdown dep:
+library(rmarkdown)
+```
+
 # Introduction
 
 ## Contents
@@ -114,7 +120,7 @@ Based on [workflow.yml file for](https://github.com/nptscot/nptscot.github.io/bl
 
 ## Comparing approaches
 
-{{\<video "geocompx_multi_lingal_blogpost.mp4"\>}}
+{{< video "geocompx_multi_lingal_blogpost.mp4" >}}
 
 ## Adding new languages
 
