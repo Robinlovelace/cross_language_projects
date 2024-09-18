@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Deploying cross-language</title>
+<title>Deploying cross-language in high impact projects</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Deploying cross-language</h1>
+<h1 class="title">Deploying cross-language in high impact projects</h1>
 </div>
 
 
@@ -126,9 +160,73 @@ ul.task-list li input[type="checkbox"] {
 
 <p>The materials here support a talk at the <a href="https://spatial-data-science.github.io/2024/">Spatial Data Science across Languages (SDSL)</a> conference 2024.</p>
 <p>See the <a href="slides">slides here</a> and in the dropdown menu above.</p>
+<p>The quickest way to reproduce the code is probably with GitHub codespaces, by opening the following link.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://codespaces.new/Robinlovelace/cross_language_projects"><img src="https://github.com/codespaces/badge.svg" class="img-fluid figure-img" alt="Open in GitHub Codespaces"></a></p>
+<figcaption>Open in GitHub Codespaces</figcaption>
+</figure>
+</div>
 <p>See the source code at <a href="https://github.com/Robinlovelace/cross_language_projects">github.com/robinlovelace</a>.</p>
+<p>See the README for more information.</p>
+<p>Based on https://robinlovelace.github.io/reproducible-slides-repo-template/slides</p>
+<p>To create your own “reproducible slides repo” follow the instructions in the link above, starting by cloning this repo or creating a template from this one:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> repo clone robinlovelace/cross_language_projects</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> cross_language_projects</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or go to https://github.com/Robinlovelace/reproducible-slides-repo-template and click “Use this template”.</p>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>To setup the repo the following commands were used</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> repo create <span class="co"># create the repo on github</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Take snapshot with renv:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Load the renv with this (also in .Rprofile):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"renv/activate.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make renv pick-up rmarkdown dep:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Install Python packages with:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reticulate::install_python()</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(<span class="st">"geopandas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using Python: /usr/bin/python3.12
+Creating virtual environment '~/.virtualenvs/r-reticulate' ... </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>+ /usr/bin/python3.12 -m venv /home/runner/.virtualenvs/r-reticulate</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Done!
+Installing packages: pip, wheel, setuptools</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>+ /home/runner/.virtualenvs/r-reticulate/bin/python -m pip install --upgrade pip wheel setuptools</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Virtual environment '~/.virtualenvs/r-reticulate' successfully created.
+Using virtual environment '~/.virtualenvs/r-reticulate' ...</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>+ /home/runner/.virtualenvs/r-reticulate/bin/python -m pip install --upgrade --no-user geopandas</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(<span class="st">"matplotlib"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using virtual environment '/home/runner/.virtualenvs/r-reticulate' ...</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>+ /home/runner/.virtualenvs/r-reticulate/bin/python -m pip install --upgrade --no-user matplotlib</code></pre>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -573,15 +573,17 @@ Robin Lovelace <a href="https://orcid.org/0000-0001-5679-6536" class="quarto-tit
 </ul></li>
 </ul>
 <div class="panel-tabset" data-group="language">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Python</a></li><li><a href="#tabset-1-2">R</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">R</a></li><li><a href="#tabset-1-2">Python</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-1-1">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb1-2"><a></a><span class="bu">print</span>(<span class="st">"Hello world"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 <div id="tabset-1-2">
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(sf)</span>
-<span id="cb2-2"><a></a><span class="fu">message</span>(<span class="st">"Hello world"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello world</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -605,194 +607,194 @@ Robin Lovelace <a href="https://orcid.org/0000-0001-5679-6536" class="quarto-tit
 <section id="loose-coupling" class="slide level2">
 <h2>Loose coupling</h2>
 <p>Example: <a href="https://github.com/dabreegster/odjitter/blob/98a7a6e03bc54bc79d3b3abbde91b6f79173ff1a/r/R/jitter.R#L163C1-L180C33"><code>odjitter</code></a> R package</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>  msg <span class="ot">=</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{odjitter_location} jitter --od-csv-path {od_csv_path} </span><span class="sc">\\</span></span>
-<span id="cb3-2"><a></a><span class="st">  --zones-path {zones_path} </span><span class="sc">\\</span></span>
-<span id="cb3-3"><a></a><span class="st">  --zone-name-key {zone_name_key} </span><span class="sc">\\</span></span>
-<span id="cb3-4"><a></a><span class="st">  --origin-key {origin_key} </span><span class="sc">\\</span></span>
-<span id="cb3-5"><a></a><span class="st">  --destination-key {destination_key} </span><span class="sc">\\</span></span>
-<span id="cb3-6"><a></a><span class="st">  --subpoints-origins-path {subpoints_origins_path} </span><span class="sc">\\</span></span>
-<span id="cb3-7"><a></a><span class="st">  --subpoints-destinations-path {subpoints_destinations_path} </span><span class="sc">\\</span></span>
-<span id="cb3-8"><a></a><span class="st">  --disaggregation-key {disaggregation_key} </span><span class="sc">\\</span></span>
-<span id="cb3-9"><a></a><span class="st">  --disaggregation-threshold {disaggregation_threshold} </span><span class="sc">\\</span></span>
-<span id="cb3-10"><a></a><span class="st">  --rng-seed {rng_seed} </span><span class="sc">\\</span></span>
-<span id="cb3-11"><a></a><span class="st">  {deduplicate_pairs}  </span><span class="sc">\\</span></span>
-<span id="cb3-12"><a></a><span class="st">  --output-path {output_path}"</span>)</span>
-<span id="cb3-13"><a></a>  <span class="cf">if</span>(show_command) {</span>
-<span id="cb3-14"><a></a>    <span class="fu">message</span>(<span class="st">"command sent to the system:"</span>)</span>
-<span id="cb3-15"><a></a>    <span class="fu">cat</span>(msg)</span>
-<span id="cb3-16"><a></a>  }</span>
-<span id="cb3-17"><a></a>  <span class="fu">system</span>(msg)</span>
-<span id="cb3-18"><a></a>  res <span class="ot">=</span> sf<span class="sc">::</span><span class="fu">read_sf</span>(output_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>  msg <span class="ot">=</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{odjitter_location} jitter --od-csv-path {od_csv_path} </span><span class="sc">\\</span></span>
+<span id="cb2-2"><a></a><span class="st">  --zones-path {zones_path} </span><span class="sc">\\</span></span>
+<span id="cb2-3"><a></a><span class="st">  --zone-name-key {zone_name_key} </span><span class="sc">\\</span></span>
+<span id="cb2-4"><a></a><span class="st">  --origin-key {origin_key} </span><span class="sc">\\</span></span>
+<span id="cb2-5"><a></a><span class="st">  --destination-key {destination_key} </span><span class="sc">\\</span></span>
+<span id="cb2-6"><a></a><span class="st">  --subpoints-origins-path {subpoints_origins_path} </span><span class="sc">\\</span></span>
+<span id="cb2-7"><a></a><span class="st">  --subpoints-destinations-path {subpoints_destinations_path} </span><span class="sc">\\</span></span>
+<span id="cb2-8"><a></a><span class="st">  --disaggregation-key {disaggregation_key} </span><span class="sc">\\</span></span>
+<span id="cb2-9"><a></a><span class="st">  --disaggregation-threshold {disaggregation_threshold} </span><span class="sc">\\</span></span>
+<span id="cb2-10"><a></a><span class="st">  --rng-seed {rng_seed} </span><span class="sc">\\</span></span>
+<span id="cb2-11"><a></a><span class="st">  {deduplicate_pairs}  </span><span class="sc">\\</span></span>
+<span id="cb2-12"><a></a><span class="st">  --output-path {output_path}"</span>)</span>
+<span id="cb2-13"><a></a>  <span class="cf">if</span>(show_command) {</span>
+<span id="cb2-14"><a></a>    <span class="fu">message</span>(<span class="st">"command sent to the system:"</span>)</span>
+<span id="cb2-15"><a></a>    <span class="fu">cat</span>(msg)</span>
+<span id="cb2-16"><a></a>  }</span>
+<span id="cb2-17"><a></a>  <span class="fu">system</span>(msg)</span>
+<span id="cb2-18"><a></a>  res <span class="ot">=</span> sf<span class="sc">::</span><span class="fu">read_sf</span>(output_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="loose-coupling-1" class="slide level2">
 <h2>Loose coupling</h2>
 <p>Example: <a href="https://github.com/r-spatial/qgisprocess/blob/702358e5849b38a9ce8550ee0f8b465c902d59d4/R/qgis-run.R#L26-L53"><code>qgisprocess</code> R package</a></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>qgis_run <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">args =</span> <span class="fu">character</span>(), ..., <span class="at">env =</span> <span class="fu">qgis_env</span>(), <span class="at">path =</span> <span class="fu">qgis_path</span>()) {</span>
-<span id="cb4-2"><a></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(path)) {</span>
-<span id="cb4-3"><a></a>    <span class="fu">message</span>(</span>
-<span id="cb4-4"><a></a>      <span class="st">"The filepath of 'qgis_process' is not present in the package cache, "</span>,</span>
-<span id="cb4-5"><a></a>      <span class="st">"so the package is not well configured.</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb4-6"><a></a>      <span class="st">"Restart R and reload the package; run `qgis_configure()` if needed.</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb4-7"><a></a>      <span class="st">"For now, will try to fix it on the fly, but some functionality may not work.</span><span class="sc">\n</span><span class="st">"</span></span>
-<span id="cb4-8"><a></a>    )</span>
-<span id="cb4-9"><a></a>    path <span class="ot">&lt;-</span> <span class="fu">qgis_path</span>(<span class="at">query =</span> <span class="cn">TRUE</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb4-10"><a></a>    <span class="co"># typically the version will also be missing, so fixing that as well:</span></span>
-<span id="cb4-11"><a></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(qgisprocess_cache<span class="sc">$</span>version)) {</span>
-<span id="cb4-12"><a></a>      <span class="fu">invisible</span>(<span class="fu">qgis_version</span>(<span class="at">query =</span> <span class="cn">TRUE</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb4-13"><a></a>    }</span>
-<span id="cb4-14"><a></a>  }</span>
-<span id="cb4-15"><a></a>  <span class="co"># workaround for running Windows batch files where arguments have spaces</span></span>
-<span id="cb4-16"><a></a>  <span class="co"># see https://github.com/r-lib/processx/issues/301</span></span>
-<span id="cb4-17"><a></a>  <span class="cf">if</span> (<span class="fu">is_windows</span>()) {</span>
-<span id="cb4-18"><a></a>    withr<span class="sc">::</span><span class="fu">with_envvar</span>(</span>
-<span id="cb4-19"><a></a>      env,</span>
-<span id="cb4-20"><a></a>      processx<span class="sc">::</span><span class="fu">run</span>(<span class="st">"cmd.exe"</span>, <span class="fu">c</span>(<span class="st">"/c"</span>, <span class="st">"call"</span>, path, args), ...),</span>
-<span id="cb4-21"><a></a>    )</span>
-<span id="cb4-22"><a></a>  } <span class="cf">else</span> {</span>
-<span id="cb4-23"><a></a>    withr<span class="sc">::</span><span class="fu">with_envvar</span>(</span>
-<span id="cb4-24"><a></a>      env,</span>
-<span id="cb4-25"><a></a>      processx<span class="sc">::</span><span class="fu">run</span>(path, args, ...)</span>
-<span id="cb4-26"><a></a>    )</span>
-<span id="cb4-27"><a></a>  }</span>
-<span id="cb4-28"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>qgis_run <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">args =</span> <span class="fu">character</span>(), ..., <span class="at">env =</span> <span class="fu">qgis_env</span>(), <span class="at">path =</span> <span class="fu">qgis_path</span>()) {</span>
+<span id="cb3-2"><a></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(path)) {</span>
+<span id="cb3-3"><a></a>    <span class="fu">message</span>(</span>
+<span id="cb3-4"><a></a>      <span class="st">"The filepath of 'qgis_process' is not present in the package cache, "</span>,</span>
+<span id="cb3-5"><a></a>      <span class="st">"so the package is not well configured.</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb3-6"><a></a>      <span class="st">"Restart R and reload the package; run `qgis_configure()` if needed.</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb3-7"><a></a>      <span class="st">"For now, will try to fix it on the fly, but some functionality may not work.</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb3-8"><a></a>    )</span>
+<span id="cb3-9"><a></a>    path <span class="ot">&lt;-</span> <span class="fu">qgis_path</span>(<span class="at">query =</span> <span class="cn">TRUE</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-10"><a></a>    <span class="co"># typically the version will also be missing, so fixing that as well:</span></span>
+<span id="cb3-11"><a></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(qgisprocess_cache<span class="sc">$</span>version)) {</span>
+<span id="cb3-12"><a></a>      <span class="fu">invisible</span>(<span class="fu">qgis_version</span>(<span class="at">query =</span> <span class="cn">TRUE</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb3-13"><a></a>    }</span>
+<span id="cb3-14"><a></a>  }</span>
+<span id="cb3-15"><a></a>  <span class="co"># workaround for running Windows batch files where arguments have spaces</span></span>
+<span id="cb3-16"><a></a>  <span class="co"># see https://github.com/r-lib/processx/issues/301</span></span>
+<span id="cb3-17"><a></a>  <span class="cf">if</span> (<span class="fu">is_windows</span>()) {</span>
+<span id="cb3-18"><a></a>    withr<span class="sc">::</span><span class="fu">with_envvar</span>(</span>
+<span id="cb3-19"><a></a>      env,</span>
+<span id="cb3-20"><a></a>      processx<span class="sc">::</span><span class="fu">run</span>(<span class="st">"cmd.exe"</span>, <span class="fu">c</span>(<span class="st">"/c"</span>, <span class="st">"call"</span>, path, args), ...),</span>
+<span id="cb3-21"><a></a>    )</span>
+<span id="cb3-22"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb3-23"><a></a>    withr<span class="sc">::</span><span class="fu">with_envvar</span>(</span>
+<span id="cb3-24"><a></a>      env,</span>
+<span id="cb3-25"><a></a>      processx<span class="sc">::</span><span class="fu">run</span>(path, args, ...)</span>
+<span id="cb3-26"><a></a>    )</span>
+<span id="cb3-27"><a></a>  }</span>
+<span id="cb3-28"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tight-coupling-1" class="slide level2">
 <h2>Tight coupling 1</h2>
 <p>Source: <a href="https://github.com/geoarrow/geoarrow-c/blob/main/python/geoarrow-c/src/geoarrow/c/_lib.pyx#L1-L22"><code>geoarrow-c</code></a></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a></span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a><span class="co"># cython: language_level = 3</span></span>
-<span id="cb5-4"><a></a><span class="co"># cython: linetrace=True</span></span>
-<span id="cb5-5"><a></a></span>
-<span id="cb5-6"><a></a></span>
-<span id="cb5-7"><a></a><span class="co">"""Low-level geoarrow Python bindings."""</span></span>
-<span id="cb5-8"><a></a></span>
-<span id="cb5-9"><a></a></span>
-<span id="cb5-10"><a></a><span class="im">from</span> libc.stdint cimport uint8_t, int32_t, int64_t, uintptr_t</span>
-<span id="cb5-11"><a></a><span class="im">from</span> cpython cimport Py_buffer, PyObject</span>
-<span id="cb5-12"><a></a><span class="im">from</span> libcpp cimport <span class="bu">bool</span></span>
-<span id="cb5-13"><a></a><span class="im">from</span> libcpp.string cimport string</span>
-<span id="cb5-14"><a></a></span>
-<span id="cb5-15"><a></a></span>
-<span id="cb5-16"><a></a>cdef extern <span class="im">from</span> <span class="st">"geoarrow_type.h"</span>:</span>
-<span id="cb5-17"><a></a>    struct ArrowSchema:</span>
-<span id="cb5-18"><a></a>        const char<span class="op">*</span> <span class="bu">format</span></span>
-<span id="cb5-19"><a></a>        const char<span class="op">*</span> name</span>
-<span id="cb5-20"><a></a>        const char<span class="op">*</span> metadata</span>
-<span id="cb5-21"><a></a>        int64_t flags</span>
-<span id="cb5-22"><a></a>        int64_t n_children</span>
-<span id="cb5-23"><a></a>        ArrowSchema<span class="op">**</span> children</span>
-<span id="cb5-24"><a></a>        ArrowSchema<span class="op">*</span> dictionary</span>
-<span id="cb5-25"><a></a>        void (<span class="op">*</span>release)(ArrowSchema<span class="op">*</span>)</span>
-<span id="cb5-26"><a></a>        void<span class="op">*</span> private_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a></span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a><span class="co"># cython: language_level = 3</span></span>
+<span id="cb4-4"><a></a><span class="co"># cython: linetrace=True</span></span>
+<span id="cb4-5"><a></a></span>
+<span id="cb4-6"><a></a></span>
+<span id="cb4-7"><a></a><span class="co">"""Low-level geoarrow Python bindings."""</span></span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a></span>
+<span id="cb4-10"><a></a><span class="im">from</span> libc.stdint cimport uint8_t, int32_t, int64_t, uintptr_t</span>
+<span id="cb4-11"><a></a><span class="im">from</span> cpython cimport Py_buffer, PyObject</span>
+<span id="cb4-12"><a></a><span class="im">from</span> libcpp cimport <span class="bu">bool</span></span>
+<span id="cb4-13"><a></a><span class="im">from</span> libcpp.string cimport string</span>
+<span id="cb4-14"><a></a></span>
+<span id="cb4-15"><a></a></span>
+<span id="cb4-16"><a></a>cdef extern <span class="im">from</span> <span class="st">"geoarrow_type.h"</span>:</span>
+<span id="cb4-17"><a></a>    struct ArrowSchema:</span>
+<span id="cb4-18"><a></a>        const char<span class="op">*</span> <span class="bu">format</span></span>
+<span id="cb4-19"><a></a>        const char<span class="op">*</span> name</span>
+<span id="cb4-20"><a></a>        const char<span class="op">*</span> metadata</span>
+<span id="cb4-21"><a></a>        int64_t flags</span>
+<span id="cb4-22"><a></a>        int64_t n_children</span>
+<span id="cb4-23"><a></a>        ArrowSchema<span class="op">**</span> children</span>
+<span id="cb4-24"><a></a>        ArrowSchema<span class="op">*</span> dictionary</span>
+<span id="cb4-25"><a></a>        void (<span class="op">*</span>release)(ArrowSchema<span class="op">*</span>)</span>
+<span id="cb4-26"><a></a>        void<span class="op">*</span> private_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tight-coupling-2" class="slide level2">
 <h2>Tight coupling 2</h2>
 <p>Source: <a href="https://github.com/geoarrow/geoarrow-rs/blob/db06a8bf4b591b38fc164c29be86c630108751f6/python/pyo3-geoarrow/src/data_type.rs#L1-L29"><code>geoarrow-rs</code></a></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource rust number-lines code-with-copy"><code class="sourceCode rust"><span id="cb6-1"><a></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::error::</span><span class="op">{</span>PyGeoArrowError<span class="op">,</span> PyGeoArrowResult<span class="op">};</span></span>
-<span id="cb6-2"><a></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">{</span>PyCoordType<span class="op">,</span> PyDimension<span class="op">};</span></span>
-<span id="cb6-3"><a></a></span>
-<span id="cb6-4"><a></a></span>
-<span id="cb6-5"><a></a><span class="kw">use</span> <span class="pp">geoarrow::array::</span>CoordType<span class="op">;</span></span>
-<span id="cb6-6"><a></a><span class="kw">use</span> <span class="pp">geoarrow::datatypes::</span><span class="op">{</span>Dimension<span class="op">,</span> GeoDataType<span class="op">};</span></span>
-<span id="cb6-7"><a></a><span class="kw">use</span> <span class="pp">pyo3::exceptions::</span>PyValueError<span class="op">;</span></span>
-<span id="cb6-8"><a></a><span class="kw">use</span> <span class="pp">pyo3::</span>intern<span class="op">;</span></span>
-<span id="cb6-9"><a></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
-<span id="cb6-10"><a></a><span class="kw">use</span> <span class="pp">pyo3::types::</span><span class="op">{</span>PyCapsule<span class="op">,</span> PyType<span class="op">};</span></span>
-<span id="cb6-11"><a></a><span class="kw">use</span> <span class="pp">pyo3_arrow::ffi::</span>to_schema_pycapsule<span class="op">;</span></span>
-<span id="cb6-12"><a></a><span class="kw">use</span> <span class="pp">pyo3_arrow::</span>PyField<span class="op">;</span></span>
-<span id="cb6-13"><a></a></span>
-<span id="cb6-14"><a></a></span>
-<span id="cb6-15"><a></a><span class="at">#[</span>pyclass<span class="at">(</span>module <span class="op">=</span> <span class="st">"geoarrow.rust.core._rust"</span><span class="op">,</span> name <span class="op">=</span> <span class="st">"GeometryType"</span><span class="op">,</span> subclass<span class="at">)]</span></span>
-<span id="cb6-16"><a></a><span class="kw">pub</span> <span class="kw">struct</span> PyGeometryType(<span class="kw">pub</span>(<span class="kw">crate</span>) GeoDataType)<span class="op">;</span></span>
-<span id="cb6-17"><a></a></span>
-<span id="cb6-18"><a></a></span>
-<span id="cb6-19"><a></a><span class="kw">impl</span> PyGeometryType <span class="op">{</span></span>
-<span id="cb6-20"><a></a>    <span class="kw">pub</span> <span class="kw">fn</span> new(data_type<span class="op">:</span> GeoDataType) <span class="op">-&gt;</span> <span class="dt">Self</span> <span class="op">{</span></span>
-<span id="cb6-21"><a></a>        <span class="dt">Self</span>(data_type)</span>
-<span id="cb6-22"><a></a>    <span class="op">}</span></span>
-<span id="cb6-23"><a></a></span>
-<span id="cb6-24"><a></a></span>
-<span id="cb6-25"><a></a>    <span class="co">/// Import from a raw Arrow C Schema capsules</span></span>
-<span id="cb6-26"><a></a>    <span class="kw">pub</span> <span class="kw">fn</span> from_arrow_pycapsule(capsule<span class="op">:</span> <span class="op">&amp;</span>Bound<span class="op">&lt;</span>PyCapsule<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyGeoArrowResult<span class="op">&lt;</span><span class="dt">Self</span><span class="op">&gt;</span> <span class="op">{</span></span>
-<span id="cb6-27"><a></a>        <span class="pp">PyField::</span>from_arrow_pycapsule(capsule)<span class="op">?.</span>try_into()</span>
-<span id="cb6-28"><a></a>    <span class="op">}</span></span>
-<span id="cb6-29"><a></a></span>
-<span id="cb6-30"><a></a></span>
-<span id="cb6-31"><a></a>    <span class="kw">pub</span> <span class="kw">fn</span> into_inner(<span class="kw">self</span>) <span class="op">-&gt;</span> GeoDataType <span class="op">{</span></span>
-<span id="cb6-32"><a></a>        <span class="kw">self</span><span class="op">.</span><span class="dv">0</span></span>
-<span id="cb6-33"><a></a>    <span class="op">}</span></span>
-<span id="cb6-34"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource rust number-lines code-with-copy"><code class="sourceCode rust"><span id="cb5-1"><a></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::error::</span><span class="op">{</span>PyGeoArrowError<span class="op">,</span> PyGeoArrowResult<span class="op">};</span></span>
+<span id="cb5-2"><a></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">{</span>PyCoordType<span class="op">,</span> PyDimension<span class="op">};</span></span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a></span>
+<span id="cb5-5"><a></a><span class="kw">use</span> <span class="pp">geoarrow::array::</span>CoordType<span class="op">;</span></span>
+<span id="cb5-6"><a></a><span class="kw">use</span> <span class="pp">geoarrow::datatypes::</span><span class="op">{</span>Dimension<span class="op">,</span> GeoDataType<span class="op">};</span></span>
+<span id="cb5-7"><a></a><span class="kw">use</span> <span class="pp">pyo3::exceptions::</span>PyValueError<span class="op">;</span></span>
+<span id="cb5-8"><a></a><span class="kw">use</span> <span class="pp">pyo3::</span>intern<span class="op">;</span></span>
+<span id="cb5-9"><a></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
+<span id="cb5-10"><a></a><span class="kw">use</span> <span class="pp">pyo3::types::</span><span class="op">{</span>PyCapsule<span class="op">,</span> PyType<span class="op">};</span></span>
+<span id="cb5-11"><a></a><span class="kw">use</span> <span class="pp">pyo3_arrow::ffi::</span>to_schema_pycapsule<span class="op">;</span></span>
+<span id="cb5-12"><a></a><span class="kw">use</span> <span class="pp">pyo3_arrow::</span>PyField<span class="op">;</span></span>
+<span id="cb5-13"><a></a></span>
+<span id="cb5-14"><a></a></span>
+<span id="cb5-15"><a></a><span class="at">#[</span>pyclass<span class="at">(</span>module <span class="op">=</span> <span class="st">"geoarrow.rust.core._rust"</span><span class="op">,</span> name <span class="op">=</span> <span class="st">"GeometryType"</span><span class="op">,</span> subclass<span class="at">)]</span></span>
+<span id="cb5-16"><a></a><span class="kw">pub</span> <span class="kw">struct</span> PyGeometryType(<span class="kw">pub</span>(<span class="kw">crate</span>) GeoDataType)<span class="op">;</span></span>
+<span id="cb5-17"><a></a></span>
+<span id="cb5-18"><a></a></span>
+<span id="cb5-19"><a></a><span class="kw">impl</span> PyGeometryType <span class="op">{</span></span>
+<span id="cb5-20"><a></a>    <span class="kw">pub</span> <span class="kw">fn</span> new(data_type<span class="op">:</span> GeoDataType) <span class="op">-&gt;</span> <span class="dt">Self</span> <span class="op">{</span></span>
+<span id="cb5-21"><a></a>        <span class="dt">Self</span>(data_type)</span>
+<span id="cb5-22"><a></a>    <span class="op">}</span></span>
+<span id="cb5-23"><a></a></span>
+<span id="cb5-24"><a></a></span>
+<span id="cb5-25"><a></a>    <span class="co">/// Import from a raw Arrow C Schema capsules</span></span>
+<span id="cb5-26"><a></a>    <span class="kw">pub</span> <span class="kw">fn</span> from_arrow_pycapsule(capsule<span class="op">:</span> <span class="op">&amp;</span>Bound<span class="op">&lt;</span>PyCapsule<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyGeoArrowResult<span class="op">&lt;</span><span class="dt">Self</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb5-27"><a></a>        <span class="pp">PyField::</span>from_arrow_pycapsule(capsule)<span class="op">?.</span>try_into()</span>
+<span id="cb5-28"><a></a>    <span class="op">}</span></span>
+<span id="cb5-29"><a></a></span>
+<span id="cb5-30"><a></a></span>
+<span id="cb5-31"><a></a>    <span class="kw">pub</span> <span class="kw">fn</span> into_inner(<span class="kw">self</span>) <span class="op">-&gt;</span> GeoDataType <span class="op">{</span></span>
+<span id="cb5-32"><a></a>        <span class="kw">self</span><span class="op">.</span><span class="dv">0</span></span>
+<span id="cb5-33"><a></a>    <span class="op">}</span></span>
+<span id="cb5-34"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tight-coupling-3" class="slide level2">
 <h2>Tight coupling 3</h2>
 <p>Source: <a href="https://github.com/r-spatial/sf/blob/35f5f8be44e1923d242a489b51d7c58b8397a2a9/R/RcppExports.R#L212-L218"><code>RcppExports.R</code> in <code>sf</code></a></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>CPL_geos_union <span class="ot">&lt;-</span> <span class="cf">function</span>(sfc, <span class="at">by_feature =</span> <span class="cn">FALSE</span>, <span class="at">is_coverage =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb7-2"><a></a>    <span class="fu">.Call</span>(<span class="st">`</span><span class="at">_sf_CPL_geos_union</span><span class="st">`</span>, sfc, by_feature, is_coverage)</span>
-<span id="cb7-3"><a></a>}</span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a>CPL_geos_snap <span class="ot">&lt;-</span> <span class="cf">function</span>(sfc0, sfc1, tolerance) {</span>
-<span id="cb7-7"><a></a>    <span class="fu">.Call</span>(<span class="st">`</span><span class="at">_sf_CPL_geos_snap</span><span class="st">`</span>, sfc0, sfc1, tolerance)</span>
-<span id="cb7-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>CPL_geos_union <span class="ot">&lt;-</span> <span class="cf">function</span>(sfc, <span class="at">by_feature =</span> <span class="cn">FALSE</span>, <span class="at">is_coverage =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb6-2"><a></a>    <span class="fu">.Call</span>(<span class="st">`</span><span class="at">_sf_CPL_geos_union</span><span class="st">`</span>, sfc, by_feature, is_coverage)</span>
+<span id="cb6-3"><a></a>}</span>
+<span id="cb6-4"><a></a></span>
+<span id="cb6-5"><a></a></span>
+<span id="cb6-6"><a></a>CPL_geos_snap <span class="ot">&lt;-</span> <span class="cf">function</span>(sfc0, sfc1, tolerance) {</span>
+<span id="cb6-7"><a></a>    <span class="fu">.Call</span>(<span class="st">`</span><span class="at">_sf_CPL_geos_snap</span><span class="st">`</span>, sfc0, sfc1, tolerance)</span>
+<span id="cb6-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tight-coupling-4" class="slide level2">
 <h2>Tight coupling 4</h2>
 <!-- https://github.com/paleolimbot/geos/blob/HEAD/R/geos-unary-geometry.R#L153-L169 -->
 <p>Source: <a href="https://github.com/paleolimbot/geos/blob/HEAD/R/geos-unary-geometry.R#L153-L169"><code>geos-unary-geometry.R</code> in <code>geos</code></a></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co">#' @rdname geos_centroid</span></span>
-<span id="cb8-2"><a></a><span class="co">#' @export</span></span>
-<span id="cb8-3"><a></a>geos_unary_union <span class="ot">&lt;-</span> <span class="cf">function</span>(geom) {</span>
-<span id="cb8-4"><a></a>  geom <span class="ot">&lt;-</span> <span class="fu">sanitize_geos_geometry</span>(geom)</span>
-<span id="cb8-5"><a></a>  <span class="fu">new_geos_geometry</span>(<span class="fu">.Call</span>(geos_c_unary_union, geom), <span class="at">crs =</span> <span class="fu">attr</span>(geom, <span class="st">"crs"</span>, <span class="at">exact =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb8-6"><a></a>}</span>
-<span id="cb8-7"><a></a></span>
-<span id="cb8-8"><a></a></span>
-<span id="cb8-9"><a></a><span class="co">#' @rdname geos_centroid</span></span>
-<span id="cb8-10"><a></a><span class="co">#' @export</span></span>
-<span id="cb8-11"><a></a>geos_unary_union_prec <span class="ot">&lt;-</span> <span class="cf">function</span>(geom, grid_size) {</span>
-<span id="cb8-12"><a></a>  geom <span class="ot">&lt;-</span> <span class="fu">sanitize_geos_geometry</span>(geom)</span>
-<span id="cb8-13"><a></a>  recycled <span class="ot">&lt;-</span> <span class="fu">recycle_common</span>(<span class="fu">list</span>(geom, <span class="fu">sanitize_double</span>(grid_size)))</span>
-<span id="cb8-14"><a></a>  <span class="fu">new_geos_geometry</span>(</span>
-<span id="cb8-15"><a></a>    <span class="fu">.Call</span>(geos_c_unary_union_prec, recycled[[<span class="dv">1</span>]], recycled[[<span class="dv">2</span>]]),</span>
-<span id="cb8-16"><a></a>    <span class="at">crs =</span> <span class="fu">attr</span>(geom, <span class="st">"crs"</span>, <span class="at">exact =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-17"><a></a>  )</span>
-<span id="cb8-18"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co">#' @rdname geos_centroid</span></span>
+<span id="cb7-2"><a></a><span class="co">#' @export</span></span>
+<span id="cb7-3"><a></a>geos_unary_union <span class="ot">&lt;-</span> <span class="cf">function</span>(geom) {</span>
+<span id="cb7-4"><a></a>  geom <span class="ot">&lt;-</span> <span class="fu">sanitize_geos_geometry</span>(geom)</span>
+<span id="cb7-5"><a></a>  <span class="fu">new_geos_geometry</span>(<span class="fu">.Call</span>(geos_c_unary_union, geom), <span class="at">crs =</span> <span class="fu">attr</span>(geom, <span class="st">"crs"</span>, <span class="at">exact =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb7-6"><a></a>}</span>
+<span id="cb7-7"><a></a></span>
+<span id="cb7-8"><a></a></span>
+<span id="cb7-9"><a></a><span class="co">#' @rdname geos_centroid</span></span>
+<span id="cb7-10"><a></a><span class="co">#' @export</span></span>
+<span id="cb7-11"><a></a>geos_unary_union_prec <span class="ot">&lt;-</span> <span class="cf">function</span>(geom, grid_size) {</span>
+<span id="cb7-12"><a></a>  geom <span class="ot">&lt;-</span> <span class="fu">sanitize_geos_geometry</span>(geom)</span>
+<span id="cb7-13"><a></a>  recycled <span class="ot">&lt;-</span> <span class="fu">recycle_common</span>(<span class="fu">list</span>(geom, <span class="fu">sanitize_double</span>(grid_size)))</span>
+<span id="cb7-14"><a></a>  <span class="fu">new_geos_geometry</span>(</span>
+<span id="cb7-15"><a></a>    <span class="fu">.Call</span>(geos_c_unary_union_prec, recycled[[<span class="dv">1</span>]], recycled[[<span class="dv">2</span>]]),</span>
+<span id="cb7-16"><a></a>    <span class="at">crs =</span> <span class="fu">attr</span>(geom, <span class="st">"crs"</span>, <span class="at">exact =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-17"><a></a>  )</span>
+<span id="cb7-18"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tight-coupling-5" class="slide level2">
 <h2>Tight coupling 5</h2>
 <!-- https://github.com/JuliaGeo/LibGEOS.jl/blob/91f69c04843f02a995c5df54b0186891534a2ef4/src/geos_functions.jl#L712-L726 -->
 <p>Source: <a href="https://github.com/JuliaGeo/LibGEOS.jl/blob/91f69c04843f02a995c5df54b0186891534a2ef4/src/geos_functions.jl#L712-L726"><code>geos_functions.jl</code> in <code>LibGEOS.jl</code></a></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a></a><span class="kw">function</span> <span class="fu">union</span>(obj1<span class="op">::</span><span class="dt">Geometry</span>, obj2<span class="op">::</span><span class="dt">Geometry</span>, context<span class="op">::</span><span class="dt">GEOSContext </span><span class="op">=</span> <span class="fu">get_context</span>(obj1))</span>
-<span id="cb9-2"><a></a>    result <span class="op">=</span> <span class="fu">GEOSUnion_r</span>(context, obj1, obj2)</span>
-<span id="cb9-3"><a></a>    <span class="cf">if</span> result <span class="op">==</span> <span class="cn">C_NULL</span></span>
-<span id="cb9-4"><a></a>        <span class="fu">error</span>(<span class="st">"LibGEOS: Error in GEOSUnion"</span>)</span>
-<span id="cb9-5"><a></a>    <span class="cf">end</span></span>
-<span id="cb9-6"><a></a>    <span class="fu">geomFromGEOS</span>(result, context)</span>
-<span id="cb9-7"><a></a><span class="kw">end</span></span>
-<span id="cb9-8"><a></a></span>
-<span id="cb9-9"><a></a></span>
-<span id="cb9-10"><a></a><span class="kw">function</span> <span class="fu">unaryUnion</span>(obj<span class="op">::</span><span class="dt">Geometry</span>, context<span class="op">::</span><span class="dt">GEOSContext </span><span class="op">=</span> <span class="fu">get_context</span>(obj))</span>
-<span id="cb9-11"><a></a>    result <span class="op">=</span> <span class="fu">GEOSUnaryUnion_r</span>(context, obj)</span>
-<span id="cb9-12"><a></a>    <span class="cf">if</span> result <span class="op">==</span> <span class="cn">C_NULL</span></span>
-<span id="cb9-13"><a></a>        <span class="fu">error</span>(<span class="st">"LibGEOS: Error in GEOSUnaryUnion"</span>)</span>
-<span id="cb9-14"><a></a>    <span class="cf">end</span></span>
-<span id="cb9-15"><a></a>    <span class="fu">geomFromGEOS</span>(result, context)</span>
-<span id="cb9-16"><a></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a></a><span class="kw">function</span> <span class="fu">union</span>(obj1<span class="op">::</span><span class="dt">Geometry</span>, obj2<span class="op">::</span><span class="dt">Geometry</span>, context<span class="op">::</span><span class="dt">GEOSContext </span><span class="op">=</span> <span class="fu">get_context</span>(obj1))</span>
+<span id="cb8-2"><a></a>    result <span class="op">=</span> <span class="fu">GEOSUnion_r</span>(context, obj1, obj2)</span>
+<span id="cb8-3"><a></a>    <span class="cf">if</span> result <span class="op">==</span> <span class="cn">C_NULL</span></span>
+<span id="cb8-4"><a></a>        <span class="fu">error</span>(<span class="st">"LibGEOS: Error in GEOSUnion"</span>)</span>
+<span id="cb8-5"><a></a>    <span class="cf">end</span></span>
+<span id="cb8-6"><a></a>    <span class="fu">geomFromGEOS</span>(result, context)</span>
+<span id="cb8-7"><a></a><span class="kw">end</span></span>
+<span id="cb8-8"><a></a></span>
+<span id="cb8-9"><a></a></span>
+<span id="cb8-10"><a></a><span class="kw">function</span> <span class="fu">unaryUnion</span>(obj<span class="op">::</span><span class="dt">Geometry</span>, context<span class="op">::</span><span class="dt">GEOSContext </span><span class="op">=</span> <span class="fu">get_context</span>(obj))</span>
+<span id="cb8-11"><a></a>    result <span class="op">=</span> <span class="fu">GEOSUnaryUnion_r</span>(context, obj)</span>
+<span id="cb8-12"><a></a>    <span class="cf">if</span> result <span class="op">==</span> <span class="cn">C_NULL</span></span>
+<span id="cb8-13"><a></a>        <span class="fu">error</span>(<span class="st">"LibGEOS: Error in GEOSUnaryUnion"</span>)</span>
+<span id="cb8-14"><a></a>    <span class="cf">end</span></span>
+<span id="cb8-15"><a></a>    <span class="fu">geomFromGEOS</span>(result, context)</span>
+<span id="cb8-16"><a></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="project-environments" class="slide level2">
 <h2>Project environments</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a></a><span class="ex">pixi</span> init test-project <span class="at">--format</span> pyproject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a></a><span class="ex">pixi</span> init test-project <span class="at">--format</span> pyproject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>✔ Initialized project in ~/test-project</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a></a><span class="bu">cd</span> test-project</span>
-<span id="cb12-2"><a></a><span class="ex">pixi</span> add geopandas</span>
-<span id="cb12-3"><a></a><span class="ex">pixi</span> add <span class="at">--pypi</span> <span class="at">--feature</span> test pytest</span>
-<span id="cb12-4"><a></a><span class="ex">pixi</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a></a><span class="bu">cd</span> test-project</span>
+<span id="cb11-2"><a></a><span class="ex">pixi</span> add geopandas</span>
+<span id="cb11-3"><a></a><span class="ex">pixi</span> add <span class="at">--pypi</span> <span class="at">--feature</span> test pytest</span>
+<span id="cb11-4"><a></a><span class="ex">pixi</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>✔ Added pytest
 Added these as pypi-dependencies.
 Added these only for feature: test</code></pre>
 <p>Cross-language support (source: <a href="https://pixi.sh/latest/ide_integration/r_studio/">pixi.sh</a>)</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a></a><span class="ex">pixi</span> add r-ggplot2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a></a><span class="ex">pixi</span> add r-ggplot2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Although some issues according to my tests (see <a href="https://github.com/prefix-dev/pixi/issues/2066">prefix-dev/pixi#2066</a>)</p>
 </section>
 <section id="pixi-disk-space-usage" class="slide level2">
@@ -1152,15 +1154,15 @@ Added these only for feature: test</code></pre>
 <section id="bdata-demo" class="slide level2">
 <h2>bdata: demo</h2>
 <p>Source: https://github.com/b-data/jupyterlab-r-docker-stack/tree/main?t ab=readme-ov-file</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--rm</span> <span class="dt">\</span></span>
-<span id="cb16-2"><a></a>  <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
-<span id="cb16-3"><a></a>  <span class="at">-u</span> root <span class="dt">\</span></span>
-<span id="cb16-4"><a></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">${PWD}</span><span class="st">/jupyterlab-jovyan"</span>:/home/jovyan <span class="dt">\</span></span>
-<span id="cb16-5"><a></a>  <span class="at">-e</span> NB_UID=<span class="va">$(</span><span class="fu">id</span> <span class="at">-u</span><span class="va">)</span> <span class="dt">\</span></span>
-<span id="cb16-6"><a></a>  <span class="at">-e</span> NB_GID=<span class="va">$(</span><span class="fu">id</span> <span class="at">-g</span><span class="va">)</span> <span class="dt">\</span></span>
-<span id="cb16-7"><a></a>  <span class="at">-e</span> CHOWN_HOME=yes <span class="dt">\</span></span>
-<span id="cb16-8"><a></a>  <span class="at">-e</span> CHOWN_HOME_OPTS=<span class="st">'-R'</span> <span class="dt">\</span></span>
-<span id="cb16-9"><a></a>  glcr.b-data.ch/jupyterlab/r/geospatial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--rm</span> <span class="dt">\</span></span>
+<span id="cb15-2"><a></a>  <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
+<span id="cb15-3"><a></a>  <span class="at">-u</span> root <span class="dt">\</span></span>
+<span id="cb15-4"><a></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">${PWD}</span><span class="st">/jupyterlab-jovyan"</span>:/home/jovyan <span class="dt">\</span></span>
+<span id="cb15-5"><a></a>  <span class="at">-e</span> NB_UID=<span class="va">$(</span><span class="fu">id</span> <span class="at">-u</span><span class="va">)</span> <span class="dt">\</span></span>
+<span id="cb15-6"><a></a>  <span class="at">-e</span> NB_GID=<span class="va">$(</span><span class="fu">id</span> <span class="at">-g</span><span class="va">)</span> <span class="dt">\</span></span>
+<span id="cb15-7"><a></a>  <span class="at">-e</span> CHOWN_HOME=yes <span class="dt">\</span></span>
+<span id="cb15-8"><a></a>  <span class="at">-e</span> CHOWN_HOME_OPTS=<span class="st">'-R'</span> <span class="dt">\</span></span>
+<span id="cb15-9"><a></a>  glcr.b-data.ch/jupyterlab/r/geospatial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="rocker-images-on-which-geocompx-docker-builds" class="slide level2">
 <h2>Rocker images (on which geocompx docker builds):</h2>
@@ -1229,10 +1231,63 @@ RUN /rocker_scripts/install_julia.sh</code></pre>
 <h1>Bonus: cross-language publishing</h1>
 
 </section>
+<section id="quickstart-.devcontainer-in-github-codespaces" class="slide level2">
+<h2>Quickstart: .devcontainer in GitHub codespaces</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://codespaces.new/Robinlovelace/cross_language_projects"><img data-src="https://github.com/codespaces/badge.svg" alt="Open in GitHub Codespaces"></a></p>
+<figcaption>Open in GitHub Codespaces</figcaption>
+</figure>
+</div>
+<p><img data-src="images/paste-13.png"></p>
+</section>
+<section id="cross-language-tabsets" class="slide level2">
+<h2>Cross-language tabsets</h2>
+<pre><code>::: {.panel-tabset group="language"}
+...
+:::</code></pre>
+
+<img data-src="images/paste-14.png" class="r-stretch"></section>
+<section id="output" class="slide level2">
+<h2>Output</h2>
+<div class="panel-tabset" data-group="language">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">R</a></li><li><a href="#tabset-2-2">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-2-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(sf)</span>
+<span id="cb18-2"><a></a>sf<span class="sc">::</span><span class="fu">write_sf</span>(spData<span class="sc">::</span>world, <span class="st">"world.gpkg"</span>)</span>
+<span id="cb18-3"><a></a><span class="fu">plot</span>(spData<span class="sc">::</span>world)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb19-2"><a></a>world <span class="op">=</span> gpd.read_file(<span class="st">'world.gpkg'</span>)</span>
+<span id="cb19-3"><a></a>world.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="setting-up-gh-pages-branch" class="slide level2">
 <h2>Setting-up <code>gh-pages</code> branch</h2>
 <p>You can do this with a single quarto command:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Which leads to the following text and eventually auto-opens the deployed webiste!</p>
 
 <img data-src="images/paste-4.png" class="r-stretch"></section>
@@ -1248,11 +1303,9 @@ RUN /rocker_scripts/install_julia.sh</code></pre>
 <p>Source of <code>quarto publish gh-pages</code> hint: <a href="https://github.com/Robinlovelace/reproducible-slides-repo-template/actions/runs/10860601182/job/30141397336#step:4:34">Error message from GitHub Actions</a> when trying to publish slides to GitHub Pages:</p>
 <pre><code>ERROR: Unable to publish to GitHub Pages (the remote origin does not have a branch named "gh-pages". Use first `quarto publish gh-pages` locally to initialize the remote repository for publishing.)</code></pre>
 
-<img data-src="images/paste-3.png" class="r-stretch"></section></section>
-<section>
-<section id="adding-citations" class="title-slide slide level1 center" data-background-color="#40666e">
-<h1>Adding citations</h1>
-
+<img data-src="images/paste-3.png" class="r-stretch"></section>
+<section id="adding-citations" class="slide level2" data-background-color="#40666e">
+<h2>Adding citations</h2>
 </section>
 <section id="with-the-quarto-extension" class="slide level2">
 <h2>With the Quarto extension</h2>
@@ -1499,6 +1552,44 @@ Peng, Roger D. 2011. <span>“Reproducible Research in Computational Science.”
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

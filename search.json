@@ -88,7 +88,7 @@
     "href": "slides.html#practical-session",
     "title": "Deploying cross-language in high impact projects",
     "section": "Practical session?",
-    "text": "Practical session?\n\n\nWho has written and visualised side-by-side code like this?\n\nMost people\nSome people\n\n\n\nPythonR\n\n\nimport geopandas as gpd\nprint(\"Hello world\")\n\n\nlibrary(sf)\nmessage(\"Hello world\")\n\n\n\n\nWhat did you use?\nWould you like to learn?"
+    "text": "Practical session?\n\n\nWho has written and visualised side-by-side code like this?\n\nMost people\nSome people\n\n\n\nRPython\n\n\n\n\n\n\n\nHello world\n\n\n\n\n\n\nWhat did you use?\nWould you like to learn?"
   },
   {
     "objectID": "slides.html#loose-coupling",
@@ -231,6 +231,27 @@
     "text": "Interactive session\n\nWhat would your top ask be to use multiple languages in a single session?\nWhat would you like to see in a shared environment, e.g. pixi (see )"
   },
   {
+    "objectID": "slides.html#quickstart-.devcontainer-in-github-codespaces",
+    "href": "slides.html#quickstart-.devcontainer-in-github-codespaces",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Quickstart: .devcontainer in GitHub codespaces",
+    "text": "Quickstart: .devcontainer in GitHub codespaces\n\n\n\nOpen in GitHub Codespaces"
+  },
+  {
+    "objectID": "slides.html#cross-language-tabsets",
+    "href": "slides.html#cross-language-tabsets",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Cross-language tabsets",
+    "text": "Cross-language tabsets\n::: {.panel-tabset group=\"language\"}\n...\n:::"
+  },
+  {
+    "objectID": "slides.html#output",
+    "href": "slides.html#output",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Output",
+    "text": "Output\n\nRPython\n\n\n\nlibrary(sf)\nsf::write_sf(spData::world, \"world.gpkg\")\nplot(spData::world)\n\n\n\n\n\n\n\n\n\n\n\nimport geopandas as gpd\nworld = gpd.read_file('world.gpkg')\nworld.plot()"
+  },
+  {
     "objectID": "slides.html#setting-up-gh-pages-branch",
     "href": "slides.html#setting-up-gh-pages-branch",
     "title": "Deploying cross-language in high impact projects",
@@ -250,6 +271,13 @@
     "title": "Deploying cross-language in high impact projects",
     "section": "Debugging",
     "text": "Debugging\nSource of quarto publish gh-pages hint: Error message from GitHub Actions when trying to publish slides to GitHub Pages:\nERROR: Unable to publish to GitHub Pages (the remote origin does not have a branch named \"gh-pages\". Use first `quarto publish gh-pages` locally to initialize the remote repository for publishing.)"
+  },
+  {
+    "objectID": "slides.html#adding-citations",
+    "href": "slides.html#adding-citations",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Adding citations",
+    "text": "Adding citations"
   },
   {
     "objectID": "slides.html#with-the-quarto-extension",
@@ -282,8 +310,15 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Deploying cross-language",
+    "title": "Deploying cross-language in high impact projects",
     "section": "",
-    "text": "The materials here support a talk at the Spatial Data Science across Languages (SDSL) conference 2024.\nSee the slides here and in the dropdown menu above.\nSee the source code at github.com/robinlovelace."
+    "text": "The materials here support a talk at the Spatial Data Science across Languages (SDSL) conference 2024.\nSee the slides here and in the dropdown menu above.\nThe quickest way to reproduce the code is probably with GitHub codespaces, by opening the following link.\nSee the source code at github.com/robinlovelace.\nSee the README for more information.\nBased on https://robinlovelace.github.io/reproducible-slides-repo-template/slides\nTo create your own “reproducible slides repo” follow the instructions in the link above, starting by cloning this repo or creating a template from this one:\nOr go to https://github.com/Robinlovelace/reproducible-slides-repo-template and click “Use this template”."
+  },
+  {
+    "objectID": "index.html#setup",
+    "href": "index.html#setup",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Setup",
+    "text": "Setup\nTo setup the repo the following commands were used\ngh repo create # create the repo on github\n\n# Take snapshot with renv:\nrenv::snapshot()\n\nLoad the renv with this (also in .Rprofile):\n\nsource(\"renv/activate.R\")\n\n\n# make renv pick-up rmarkdown dep:\nlibrary(rmarkdown)\nlibrary(knitr)\n\nInstall Python packages with:\n\n# reticulate::install_python()\nreticulate::py_install(\"geopandas\")\n\nUsing Python: /usr/bin/python3.12\nCreating virtual environment '~/.virtualenvs/r-reticulate' ... \n\n\n+ /usr/bin/python3.12 -m venv /home/runner/.virtualenvs/r-reticulate\n\n\nDone!\nInstalling packages: pip, wheel, setuptools\n\n\n+ /home/runner/.virtualenvs/r-reticulate/bin/python -m pip install --upgrade pip wheel setuptools\n\n\nVirtual environment '~/.virtualenvs/r-reticulate' successfully created.\nUsing virtual environment '~/.virtualenvs/r-reticulate' ...\n\n\n+ /home/runner/.virtualenvs/r-reticulate/bin/python -m pip install --upgrade --no-user geopandas\n\nreticulate::py_install(\"matplotlib\")\n\nUsing virtual environment '/home/runner/.virtualenvs/r-reticulate' ...\n\n\n+ /home/runner/.virtualenvs/r-reticulate/bin/python -m pip install --upgrade --no-user matplotlib"
   }
 ]
