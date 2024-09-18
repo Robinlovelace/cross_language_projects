@@ -114,7 +114,7 @@ Based on [workflow.yml file for](https://github.com/nptscot/nptscot.github.io/bl
 
 ## Comparing approaches
 
-{{<video "geocompx_multi_lingal_blogpost.mp4">}}
+{{\<video "geocompx_multi_lingal_blogpost.mp4"\>}}
 
 ## Adding new languages
 
@@ -124,15 +124,12 @@ Source: [github.com/Robinlovelace/opengeohub2023](https://github.com/Robinlovela
 
 ## Practical session?
 
-::: {.incremental}
-
-- Who has written and visualised side-by-side code like this?
-  - [ ] Most people
-  - [ ] Some people
-
+:::: incremental
+-   Who has written and visualised side-by-side code like this?
+    -   [ ] Most people
+    -   [ ] Some people
 
 ::: {.panel-tabset group="language"}
-
 ## R
 
 ```{r}
@@ -142,18 +139,16 @@ message("Hello world")
 
 ## Python
 
-```python
+``` python
 import geopandas as gpd
 print("Hello world")
 ```
-
 :::
 
-- What did you use?
+-   What did you use?
 
-- Would you like to learn?
-
-:::
+-   Would you like to learn?
+::::
 
 # Approaches to cross-language projects
 
@@ -554,6 +549,10 @@ RUN /rocker_scripts/install_julia.sh
 
 # Bonus: cross-language publishing
 
+## Quickstart: .devcontainer in GitHub codespaces
+
+![](images/paste-13.png)
+
 ## Setting-up `gh-pages` branch
 
 You can do this with a single quarto command:
@@ -587,7 +586,7 @@ ERROR: Unable to publish to GitHub Pages (the remote origin does not have a bran
 
 ![](images/paste-3.png)
 
-# Adding citations {background-color="#40666e"}
+## Adding citations {background-color="#40666e"}
 
 ## With the Quarto extension
 
