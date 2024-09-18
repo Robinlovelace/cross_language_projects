@@ -1,0 +1,39 @@
+
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{r}
+#| echo: true
+library(sf)
+sf::write_sf(spData::world, "world.gpkg")
+plot(spData::world)
+```
+
+## Python
+
+```{python}
+#| echo: true
+import geopandas as gpd
+world = gpd.read_file('world.gpkg')
+world.plot()
+```
+
+:::
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{r}
+# Test 1
+```
+
+## Python
+
+```{python}
+# Test 2
+```
+
+:::

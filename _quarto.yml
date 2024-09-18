@@ -4,6 +4,7 @@ project:
     - index.qmd 
     - slides.qmd
     - paper.qmd
+    - demo.qmd
 
 website:
   navbar:
