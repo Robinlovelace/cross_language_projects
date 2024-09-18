@@ -22,3 +22,17 @@ code cross_language_projects
 
 Or go to https://github.com/Robinlovelace/reproducible-slides-repo-template and click "Use this template".
 
+## Setup
+
+To setup the repo the following commands were used
+
+```bash
+gh repo create # create the repo on github
+```
+
+
+```{r}
+#| eval: false
+# Take snapshot with renv:
+renv::snapshot()
+```
