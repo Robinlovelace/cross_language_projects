@@ -1,3 +1,0 @@
-This is a placeholder for a paper.
-
-{{< include _setup.qmd >}}
