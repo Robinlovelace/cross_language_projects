@@ -112,6 +112,10 @@ Based on [workflow.yml file for](https://github.com/nptscot/nptscot.github.io/bl
     -   Aeroplane flight software has 3 implementations
     -   Redundancy common in mission-critical applications
 
+## Comparing approaches
+
+{{<video "geocompx_multi_lingal_blogpost.mp4" >}}
+
 # Approaches to cross-language projects
 
 Checked boxes indicate approaches used in the NPT project.
