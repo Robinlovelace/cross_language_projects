@@ -84,6 +84,13 @@
     "text": "Adding new languages\nSource: github.com/Robinlovelace/opengeohub2023"
   },
   {
+    "objectID": "slides.html#practical-session",
+    "href": "slides.html#practical-session",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Practical session?",
+    "text": "Practical session?\n\n\nWho has written and visualised side-by-side code like this?\n\nMost people\nSome people\n\n\n\nPythonR\n\n\nimport geopandas as gpd\nprint(\"Hello world\")\n\n\nlibrary(sf)\nmessage(\"Hello world\")\n\n\n\n\nWhat did you use?\nWould you like to learn?"
+  },
+  {
     "objectID": "slides.html#loose-coupling",
     "href": "slides.html#loose-coupling",
     "title": "Deploying cross-language in high impact projects",
