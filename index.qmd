@@ -57,4 +57,5 @@ Install Python packages with:
 ```{r}
 # reticulate::install_python()
 reticulate::py_install("geopandas")
+reticulate::py_install("matplotlib")
 ```
