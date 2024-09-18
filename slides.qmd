@@ -139,12 +139,6 @@ message("Hello world")
 
 ## Python
 
-```{r}
-#| echo: false
-# reticulate::install_python()
-reticulate::py_install("geopandas")
-```
-
 ```{python}
 import geopandas as gpd
 print("Hello world")

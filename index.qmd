@@ -51,3 +51,10 @@ source("renv/activate.R")
 library(rmarkdown)
 library(knitr)
 ```
+
+Install Python packages with:
+
+```{r}
+# reticulate::install_python()
+reticulate::py_install("geopandas")
+```
