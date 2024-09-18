@@ -114,7 +114,7 @@ Based on [workflow.yml file for](https://github.com/nptscot/nptscot.github.io/bl
 
 ## Comparing approaches
 
-{{<video "geocompx_multi_lingal_blogpost.mp4" >}}
+{{\<video "geocompx_multi_lingal_blogpost.mp4" \>}}
 
 ## Adding new languages
 
