@@ -30,6 +30,11 @@ jobs:
           cache-version: 2
           extra-packages: |
             any::tibble
+          
+      - name: Install python pkgs
+        run: |
+          R -e "reticulate::py_install('geopandas')"
+          R -e "reticulate::py_install('matplotlib')"
       
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
