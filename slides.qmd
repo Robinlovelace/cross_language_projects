@@ -114,7 +114,13 @@ Based on [workflow.yml file for](https://github.com/nptscot/nptscot.github.io/bl
 
 ## Comparing approaches
 
-{{<video "geocompx_multi_lingal_blogpost.mp4" >}}
+{{\<video "geocompx_multi_lingal_blogpost.mp4" \>}}
+
+## Adding new languages
+
+Source: [github.com/Robinlovelace/opengeohub2023](https://github.com/Robinlovelace/opengeohub2023/pull/40#issuecomment-2356008871)
+
+![](images/paste-12.png)
 
 # Approaches to cross-language projects
 
@@ -400,55 +406,55 @@ Source: <https://github.com/b-data>
 
 ![](images/paste-11.png)
 
-
 ## bdata: All images
 
-| R     | Python  | Jupyter Hub | Jupyter Lab | code‑server (Code) | RStudio       | Neovim | Git    | Git LFS | Pandoc | CRAN date  | Linux distro |
-|:------|:--------|:------------|:------------|:-------------------|:--------------|:-------|:-------|:--------|:-------|:-----------|:-------------|
-| 4.4.1 | 3.12.6  | 5.1.0       | 4.2.5       | 4.92.2 (1.92.2)    | 2024.04.2+764 | 0.10.1 | 2.46.1 | 3.5.1   | 3.2    |            | Debian 12    |
-| 4.4.0 | 3.12.4  | 5.0.0       | 4.2.2       | 4.90.0 (1.90.0)    | 2024.04.2+764 | n/a    | 2.45.2 | 3.5.1   | 3.1.11 | 2024‑06‑14 | Debian 12    |
-| 4.3.3 | 3.11.9  | 4.1.5       | 4.1.6       | 4.23.0 (1.88.0)    | n/a           | n/a    | 2.44.0 | 3.5.1   | 3.1.11 | 2024‑04‑24 | Debian 12    |
-| 4.3.2 | 3.11.8  | 4.0.2       | 4.1.2       | 4.21.2 (1.86.2)    | n/a           | n/a    | 2.44.0 | 3.4.1   | 3.1.11 | 2024‑02‑29 | Debian 12    |
-| 4.3.1 | 3.11.6  | 4.0.2       | 3.6.6       | 4.18.0 (1.83.1)    | n/a           | n/a    | 2.42.0 | 3.4.0   | 3.1.1  | 2023‑10‑31 | Debian 12    |
-| 4.3.0 | 3.11.4  | 4.0.1       | 3.6.4       | 4.13.0 (1.78.2)    | n/a           | n/a    | 2.41.0 | 3.3.0   | 3.1.1  | n/a        | Debian 12    |
-| 4.2.3 | 3.10.11 | 4.0.0       | 3.6.3       | 4.9.1 (1.73.1)     | n/a           | n/a    | 2.40.0 | 3.3.0   | 2.19.2 | n/a        | Debian 11    |
-| 4.2.2 | 3.10.10 | 3.1.1       | 3.6.1       | 4.9.1 (1.73.1)     | n/a           | n/a    | 2.40.0 | 3.3.0   | 2.19.2 | n/a        | Debian 11    |
-| 4.2.1 | 3.9.2   | 2.3.1       | 3.5.0       | 4.8.1 (1.72.1)     | n/a           | n/a    | 2.38.1 | 3.2.0   | 2.19.2 | n/a        | Debian 11    |
-| 4.2.0 | 3.9.2   | 2.3.1       | 3.4.3       | 4.4.0 (1.66.2)     | n/a           | n/a    | 2.36.1 | 3.2.0   | 2.18   | n/a        | Debian 11    |
+| R | Python | Jupyter Hub | Jupyter Lab | code‑server (Code) | RStudio | Neovim | Git | Git LFS | Pandoc | CRAN date | Linux distro |
+|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
+| 4.4.1 | 3.12.6 | 5.1.0 | 4.2.5 | 4.92.2 (1.92.2) | 2024.04.2+764 | 0.10.1 | 2.46.1 | 3.5.1 | 3.2 |  | Debian 12 |
+| 4.4.0 | 3.12.4 | 5.0.0 | 4.2.2 | 4.90.0 (1.90.0) | 2024.04.2+764 | n/a | 2.45.2 | 3.5.1 | 3.1.11 | 2024‑06‑14 | Debian 12 |
+| 4.3.3 | 3.11.9 | 4.1.5 | 4.1.6 | 4.23.0 (1.88.0) | n/a | n/a | 2.44.0 | 3.5.1 | 3.1.11 | 2024‑04‑24 | Debian 12 |
+| 4.3.2 | 3.11.8 | 4.0.2 | 4.1.2 | 4.21.2 (1.86.2) | n/a | n/a | 2.44.0 | 3.4.1 | 3.1.11 | 2024‑02‑29 | Debian 12 |
+| 4.3.1 | 3.11.6 | 4.0.2 | 3.6.6 | 4.18.0 (1.83.1) | n/a | n/a | 2.42.0 | 3.4.0 | 3.1.1 | 2023‑10‑31 | Debian 12 |
+| 4.3.0 | 3.11.4 | 4.0.1 | 3.6.4 | 4.13.0 (1.78.2) | n/a | n/a | 2.41.0 | 3.3.0 | 3.1.1 | n/a | Debian 12 |
+| 4.2.3 | 3.10.11 | 4.0.0 | 3.6.3 | 4.9.1 (1.73.1) | n/a | n/a | 2.40.0 | 3.3.0 | 2.19.2 | n/a | Debian 11 |
+| 4.2.2 | 3.10.10 | 3.1.1 | 3.6.1 | 4.9.1 (1.73.1) | n/a | n/a | 2.40.0 | 3.3.0 | 2.19.2 | n/a | Debian 11 |
+| 4.2.1 | 3.9.2 | 2.3.1 | 3.5.0 | 4.8.1 (1.72.1) | n/a | n/a | 2.38.1 | 3.2.0 | 2.19.2 | n/a | Debian 11 |
+| 4.2.0 | 3.9.2 | 2.3.1 | 3.4.3 | 4.4.0 (1.66.2) | n/a | n/a | 2.36.1 | 3.2.0 | 2.18 | n/a | Debian 11 |
 
 ## bdata: verse+ images
 
-| R     | CTAN date  | Quarto      |
-|:------|:-----------|:------------|
-| 4.4.1 |            | 1.5.57      |
-| 4.4.0 | 2024‑06‑14 | 1.4.555     |
-| 4.3.3 | 2024‑04‑24 | 1.4.553     |
-| 4.3.2 | 2024‑02‑29 | 1.4.550     |
-| 4.3.1 | 2023‑10‑31 | 1.3.450     |
-| 4.3.0 | 2023‑06‑16 | 1.3.361     |
-| 4.2.3 | 2023‑04‑21 | 1.2.475[^1] |
-| 4.2.2 | 2023‑03‑15 | 1.2.335[^1] |
-| 4.2.1 | 2022‑10‑31 | 1.1.251[^1] |
-| 4.2.0 | 2022‑06‑23 | n/a         |
+| R     | CTAN date  | Quarto         |
+|:------|:-----------|:---------------|
+| 4.4.1 |            | 1.5.57         |
+| 4.4.0 | 2024‑06‑14 | 1.4.555        |
+| 4.3.3 | 2024‑04‑24 | 1.4.553        |
+| 4.3.2 | 2024‑02‑29 | 1.4.550        |
+| 4.3.1 | 2023‑10‑31 | 1.3.450        |
+| 4.3.0 | 2023‑06‑16 | 1.3.361        |
+| 4.2.3 | 2023‑04‑21 | 1.2.475\[\^1\] |
+| 4.2.2 | 2023‑03‑15 | 1.2.335\[\^1\] |
+| 4.2.1 | 2022‑10‑31 | 1.1.251\[\^1\] |
+| 4.2.0 | 2022‑06‑23 | n/a            |
 
 ## bdata: qgisprocess images
 
-| R     | QGIS   | SAGA  | OTB[^1] |
-|:------|:-------|:------|:--------|
-| 4.4.1 | 3.38.3 | 9.1.3 | 9.0.0   |
-| 4.4.0 | 3.36.3 | 9.1.3 | 9.0.0   |
-| 4.3.3 | 3.36.2 | 9.1.3 | 9.0.0   |
-| 4.3.2 | 3.36.0 | 9.1.3 | 8.1.2   |
-| 4.3.1 | 3.34.0 | 9.1.3 | 8.1.2   |
-| 4.3.0 | 3.30.3 | 8.5.0 | 8.1.1   |
-| 4.2.3 | n/a    | n/a   | n/a     |
-| 4.2.2 | n/a    | n/a   | n/a     |
-| 4.2.1 | n/a    | n/a   | n/a     |
-| 4.2.0 | n/a    | n/a   | n/a     |
+| R     | QGIS   | SAGA  | OTB\[\^1\] |
+|:------|:-------|:------|:-----------|
+| 4.4.1 | 3.38.3 | 9.1.3 | 9.0.0      |
+| 4.4.0 | 3.36.3 | 9.1.3 | 9.0.0      |
+| 4.3.3 | 3.36.2 | 9.1.3 | 9.0.0      |
+| 4.3.2 | 3.36.0 | 9.1.3 | 8.1.2      |
+| 4.3.1 | 3.34.0 | 9.1.3 | 8.1.2      |
+| 4.3.0 | 3.30.3 | 8.5.0 | 8.1.1      |
+| 4.2.3 | n/a    | n/a   | n/a        |
+| 4.2.2 | n/a    | n/a   | n/a        |
+| 4.2.1 | n/a    | n/a   | n/a        |
+| 4.2.0 | n/a    | n/a   | n/a        |
 
 ## bdata: demo
 
-Source: https://github.com/b-data/jupyterlab-r-docker-stack/tree/main?tab=readme-ov-file
+Source: https://github.com/b-data/jupyterlab-r-docker-stack/tree/main?t
+ab=readme-ov-file
 
 ``` bash
 docker run -it --rm \
@@ -471,11 +477,13 @@ install_pandoc.sh
 install_pyenv.sh
 install_python.sh -->
 
-> The Docker images built from this repository describe the software installation method in standalone scripts rather than directly in the Dockerfiles. These files are under the scripts directory, and these files are copied in all Docker images, under a top-level /rocker_scripts directory. This allows users to extend images by selecting additional modules to install on top of any pre-built images.
+> The Docker images built from this repository describe the software installation method in standalone scripts rather than directly in the Dockerfiles.
+> These files are under the scripts directory, and these files are copied in all Docker images, under a top-level /rocker_scripts directory.
+> This allows users to extend images by selecting additional modules to install on top of any pre-built images.
 
 E.g.
 
-```
+```         
 FROM rocker/rstudio:4.0.0
 RUN /rocker_scripts/install_python.sh
 RUN /rocker_scripts/install_julia.sh
@@ -485,33 +493,31 @@ RUN /rocker_scripts/install_julia.sh
 
 ## Too many options: IDE
 
-- VSCode is market leader with strong community
-  - Pro: many extensions
-  - Pro: Live Share
-  - Pro: GitHub integration (including copilot)
-  - Pro: devcontainers work out-of-the-box
-  - Con: setup time, can be intimidating
-
-- Positron
-  - Pro: More batteries included
-  - Con: Missing great VSCode features (e.g. Live Share)
-  - Con: Early days, fewer developers
-  - Thought: why didn't they put energy into great extensions for modularity?
-
-- RStudio, Jupyter Lab, Zed, ... 
+-   VSCode is market leader with strong community
+    -   Pro: many extensions
+    -   Pro: Live Share
+    -   Pro: GitHub integration (including copilot)
+    -   Pro: devcontainers work out-of-the-box
+    -   Con: setup time, can be intimidating
+-   Positron
+    -   Pro: More batteries included
+    -   Con: Missing great VSCode features (e.g. Live Share)
+    -   Con: Early days, fewer developers
+    -   Thought: why didn't they put energy into great extensions for modularity?
+-   RStudio, Jupyter Lab, Zed, ...
 
 ## Resource requirements
 
-- Each new environment can take up a few GB of space
-- Lack of shared binaries, could be overcome by pixi and judicious use of Docker containers
-- Headspace requirements of learning new syntax and quirks
+-   Each new environment can take up a few GB of space
+-   Lack of shared binaries, could be overcome by pixi and judicious use of Docker containers
+-   Headspace requirements of learning new syntax and quirks
 
 # Cross-language priorities
 
 ## Interactive session
 
-- What would your top ask be to use multiple languages in a single session?
-- What would you like to see in a shared environment, e.g. pixi (see )
+-   What would your top ask be to use multiple languages in a single session?
+-   What would you like to see in a shared environment, e.g. pixi (see )
 
 # Bonus: cross-language publishing
 
