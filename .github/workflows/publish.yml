@@ -30,11 +30,7 @@ jobs:
           cache-version: 2
           extra-packages: |
             any::tibble
-            any::quarto
       
-      - name: Install rmarkdown
-        run: Rscript -e 'install.packages(c("knitr", "rmarkdown"))'
-
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
