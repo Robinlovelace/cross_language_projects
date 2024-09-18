@@ -15,4 +15,5 @@ Imports:
     reticulate,
     rmarkdown,
     sf,
-    spData
+    spData,
+    JuliaCall
