@@ -25,13 +25,15 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Install R Dependencies
-        uses: r-lib/actions/setup-renv@v2
-        with:
-          cache-version: 1
+      - uses: r-lib/actions/setup-r-dependencies@v2
+          with:
+            cache-version: 2
+            extra-packages: |
+              any::tibble
+              any::quarto
       
       - name: Install rmarkdown
-        run: Rscript -e 'install.packages("rmarkdown")'
+        run: Rscript -e 'install.packages(c("knitr", "rmarkdown"))'
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
