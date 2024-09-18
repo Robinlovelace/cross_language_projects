@@ -122,6 +122,39 @@ Source: [github.com/Robinlovelace/opengeohub2023](https://github.com/Robinlovela
 
 ![](images/paste-12.png)
 
+## Practical session?
+
+::: {.incremental}
+
+- Who has written and visualised side-by-side code like this?
+  - [ ] Most people
+  - [ ] Some people
+
+
+::: {.panel-tabset group="language"}
+
+## Python
+
+```python
+import geopandas as gpd
+print("Hello world")
+```
+
+## R
+
+```r
+library(sf)
+message("Hello world")
+```
+
+:::
+
+- What did you use?
+
+- Would you like to learn?
+
+:::
+
 # Approaches to cross-language projects
 
 Checked boxes indicate approaches used in the NPT project.
