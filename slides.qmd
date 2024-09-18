@@ -20,6 +20,7 @@ bibliography: references.bib
 #| include: false
 # make renv pick-up rmarkdown dep:
 library(rmarkdown)
+library(knitr)
 ```
 
 # Introduction
