@@ -7,6 +7,12 @@ conference 2024.
 
 See the [slides here](slides) and in the dropdown menu above.
 
+The quickest way to reproduce the code is probably with GitHub
+codespaces, by opening the following link.
+
+[![Open in GitHub
+Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Robinlovelace/cross_language_projects)
+
 See the source code at
 [github.com/robinlovelace](https://github.com/Robinlovelace/cross_language_projects).
 
