@@ -34,6 +34,12 @@ jobs:
       - name: Install rmarkdown
         run: Rscript -e 'install.packages("rmarkdown")'
 
+      - name: Install Julia
+        uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10'
+          project: '.'
+
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
