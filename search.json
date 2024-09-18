@@ -74,7 +74,14 @@
     "href": "slides.html#comparing-approaches",
     "title": "Deploying cross-language in high impact projects",
     "section": "Comparing approaches",
-    "text": "Comparing approaches"
+    "text": "Comparing approaches\n{{&lt;video “geocompx_multi_lingal_blogpost.mp4” &gt;}}"
+  },
+  {
+    "objectID": "slides.html#adding-new-languages",
+    "href": "slides.html#adding-new-languages",
+    "title": "Deploying cross-language in high impact projects",
+    "section": "Adding new languages",
+    "text": "Adding new languages\nSource: github.com/Robinlovelace/opengeohub2023"
   },
   {
     "objectID": "slides.html#loose-coupling",
@@ -186,7 +193,7 @@
     "href": "slides.html#bdata-demo",
     "title": "Deploying cross-language in high impact projects",
     "section": "bdata: demo",
-    "text": "bdata: demo\nSource: https://github.com/b-data/jupyterlab-r-docker-stack/tree/main?tab=readme-ov-file\ndocker run -it --rm \\\n  -p 8888:8888 \\\n  -u root \\\n  -v \"${PWD}/jupyterlab-jovyan\":/home/jovyan \\\n  -e NB_UID=$(id -u) \\\n  -e NB_GID=$(id -g) \\\n  -e CHOWN_HOME=yes \\\n  -e CHOWN_HOME_OPTS='-R' \\\n  glcr.b-data.ch/jupyterlab/r/geospatial"
+    "text": "bdata: demo\nSource: https://github.com/b-data/jupyterlab-r-docker-stack/tree/main?t ab=readme-ov-file\ndocker run -it --rm \\\n  -p 8888:8888 \\\n  -u root \\\n  -v \"${PWD}/jupyterlab-jovyan\":/home/jovyan \\\n  -e NB_UID=$(id -u) \\\n  -e NB_GID=$(id -g) \\\n  -e CHOWN_HOME=yes \\\n  -e CHOWN_HOME_OPTS='-R' \\\n  glcr.b-data.ch/jupyterlab/r/geospatial"
   },
   {
     "objectID": "slides.html#rocker-images-on-which-geocompx-docker-builds",
