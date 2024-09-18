@@ -133,18 +133,18 @@ Source: [github.com/Robinlovelace/opengeohub2023](https://github.com/Robinlovela
 
 ::: {.panel-tabset group="language"}
 
+## R
+
+```{r}
+library(sf)
+message("Hello world")
+```
+
 ## Python
 
 ```python
 import geopandas as gpd
 print("Hello world")
-```
-
-## R
-
-```r
-library(sf)
-message("Hello world")
 ```
 
 :::
