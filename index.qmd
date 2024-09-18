@@ -43,11 +43,12 @@ renv::snapshot()
 Load the renv with this (also in .Rprofile):
 
 ```{r}
-source("renv/activate.R")
+# source("renv/activate.R")
 ```
 
 ```{r}
 # make renv pick-up rmarkdown dep:
+install.packages("rmarkdown")
 library(rmarkdown)
 library(knitr)
 ```
