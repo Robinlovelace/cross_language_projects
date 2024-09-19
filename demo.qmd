@@ -8,7 +8,6 @@
 library(sf)
 sf::write_sf(spData::world, "world.gpkg")
 plot(spData::world)
-julia = JuliaCall::julia_setup() # setup Julia
 ```
 
 ## Python
@@ -23,15 +22,12 @@ world.plot()
 ## Julia
 
 ```{julia}
-import Pkg; Pkg.add("GeoDataFrames")
 using GeoDataFrames
+using Plots
 world = GeoDataFrames.read("world.gpkg")
-```
-```{julia}
 # using CairoMakie, GeoMakie
 # f, a, p = poly(world.geom)
 # poly(f[1, 2], world.geom; axis=(; type=GeoAxis,))
-using Plots
 plot(world.geom)
 ```
 
