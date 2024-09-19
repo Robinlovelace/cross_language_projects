@@ -8,6 +8,7 @@
 library(sf)
 sf::write_sf(spData::world, "world.gpkg")
 plot(spData::world)
+julia = JuliaCall::julia_setup() # setup Julia
 ```
 
 ## Python
@@ -22,7 +23,7 @@ world.plot()
 ## Julia
 
 ```{julia}
-#| echo: true
+import Pkg; Pkg.add("GeoDataFrames")
 using GeoDataFrames
 world = GeoDataFrames.read("world.gpkg")
 ```
