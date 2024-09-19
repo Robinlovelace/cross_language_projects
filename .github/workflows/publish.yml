@@ -35,9 +35,8 @@ jobs:
 
       - name: Install Julia
         uses: julia-actions/setup-julia@v2
-        with:
-          version: '1.10'
-          project: '.'
+      - uses: julia-actions/cache@v2
+      - uses: julia-actions/julia-buildpkg@v1
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
