@@ -1,5 +1,5 @@
 ---
-engine: julia
+jupyter: julia-1.8
 ---
 
 ```{julia}
@@ -13,6 +13,10 @@ Pkg.instantiate()
 import Pkg
 Pkg.add("RCall")
 using RCall
+using Pkg
+Pkg.add("IJulia")
+using IJulia
+# notebook()
 ```
 
 
