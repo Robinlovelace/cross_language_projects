@@ -30,6 +30,9 @@ julia_setup()
 ```
 
 ```{julia}
+using Pkg
+Pkg.activate(".")
+Pkg.status()
 using GeoDataFrames
 using Plots
 world = GeoDataFrames.read("world.gpkg")
