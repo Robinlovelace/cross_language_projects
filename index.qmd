@@ -53,13 +53,6 @@ reticulate::py_install("matplotlib")
 
 Install Julia if not already installed:
 
-```{r}
-write(Sys.getenv("LD_LIBRARY_PATH"), stderr())
-Sys.setenv(LD_LIBRARY_PATH = "")
-Sys.setenv(JULIA_PROJECT = ".")
-library(JuliaCall)
-julia_setup()
-```
 
 ```bash
 curl -fsSL https://install.julialang.org | sh
