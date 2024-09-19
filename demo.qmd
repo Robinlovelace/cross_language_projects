@@ -26,7 +26,7 @@ write(Sys.getenv("LD_LIBRARY_PATH"), stderr())
 Sys.setenv(LD_LIBRARY_PATH = "")
 Sys.setenv(JULIA_PROJECT = ".")
 library(JuliaCall)
-install_julia()
+julia_setup()
 ```
 
 ```{julia}
