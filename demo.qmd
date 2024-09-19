@@ -1,3 +1,21 @@
+---
+engine: julia
+---
+
+```{julia}
+# import RCall
+import Pkg
+Pkg.add("GeoDataFrames")
+Pkg.add("Plots")
+
+# Install from toml file:
+Pkg.instantiate()
+import Pkg
+Pkg.add("RCall")
+using RCall
+```
+
+
 
 ::: {.panel-tabset group="language"}
 
@@ -23,7 +41,6 @@ world.plot()
 ## Julia
 
 ```{julia}
-import Pkg; Pkg.add("GeoDataFrames")
 using GeoDataFrames
 world = GeoDataFrames.read("world.gpkg")
 ```
