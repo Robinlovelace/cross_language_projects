@@ -35,34 +35,31 @@ gh repo create # create the repo on github
 
 ```{r}
 #| eval: false
-# Take snapshot with renv:
-renv::snapshot()
+# Install R dependencies:
+remotes::install_github("robinlovelace/cross_language_projects")
 ```
 
-Load the renv with this (also in .Rprofile):
+Install Python and necessary Python packages if not already installed with:
 
 ```{r}
-# source("renv/activate.R")
+#| eval: false
+reticulate::install_python()
 ```
-
-```{r}
-# make renv pick-up rmarkdown dep:
-install.packages("rmarkdown")
-library(rmarkdown)
-library(knitr)
-```
-
-Install Python packages with:
 
 ```{r}
 reticulate::py_install("geopandas")
 reticulate::py_install("matplotlib")
 ```
 
+Install Julia if not already installed:
+
+```bash
+curl -fsSL https://install.julialang.org | sh
+```
+
 Activate the Julia environment:
 
 ```{julia}
-#| echo: false
 using Pkg
 Pkg.activate(".")
 Pkg.instantiate()
