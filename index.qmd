@@ -62,6 +62,5 @@ Activate the Julia environment:
 ```{julia}
 using Pkg
 Pkg.activate(".")
-Pkg.instantiate()
-Pkg.add("GeoDataFrames")
+Pkg.status()
 ```
