@@ -3,7 +3,7 @@
 {
 	"name": "Debian",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "ghcr.io/geocompx/docker:pixi-rpy",
+	"image": "ghcr.io/geocompx/docker:pixi-rpy_e22aef8",
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
@@ -16,7 +16,7 @@
 		  "quarto.quarto"
 		   ]
 		}
-	  },
+	  }
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -31,6 +31,6 @@
 	// "remoteUser": "root"
 
 	// Run the script install-additional-dependencies.sh:
-	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh"
+	// "postCreateCommand": "bash .devcontainer/postCreateCommand.sh"
 
 }
