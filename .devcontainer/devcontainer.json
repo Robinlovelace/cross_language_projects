@@ -1,6 +1,6 @@
 {
-	"name": "rocker-rpy",
-	"image": "ghcr.io/geocompx/docker:rocker-rpy",
+	"name": "ghcr.io/geocompx/docker:rocker-rpyjl",
+	"image": "rocker-rpyjl",
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -8,7 +8,8 @@
 				"GitHub.copilot-chat",
 				"quarto.quarto",
 				"ms-python.python",
-				"ms-toolsai.jupyter"
+				"ms-toolsai.jupyter",
+				"julialang.language-julia"
 			]
 		}
 	}
